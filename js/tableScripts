@@ -1,0 +1,19 @@
+window.addEventListener("DOMContentLoaded", function() {
+    var nodes = document.querySelectorAll(".parent");
+    [].forEach.call(nodes, function(tr) {
+        var box = [],
+            next = tr.nextElementSibling;
+        while (next && next.classList.contains("box")) {
+            box.push(next);
+            next = next.nextElementSibling
+        }
+        tr.cells[0].addEventListener("click", function() {
+            box.forEach(function(item) {
+                item.classList.toggle("show")
+            });
+            return false
+        })
+    })
+});
+
+

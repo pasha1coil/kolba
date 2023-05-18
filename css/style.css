@@ -1,0 +1,400 @@
+body {
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  background-color: #fff;
+  font-weight: 300; }
+
+p {
+  color: #b3b3b3;
+  font-weight: 300; }
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; }
+
+a {
+  -webkit-transition: .3s all ease;
+  -o-transition: .3s all ease;
+  transition: .3s all ease; }
+  a, a:hover {
+    text-decoration: none !important; }
+.otstup{
+	padding-top: 5%;
+	top: -100px;
+}
+
+.centerposition{
+	margin: auto;
+}
+
+.content {
+  padding: 7rem 0;
+	background-color:#ffffff;
+width:90%;
+border-radius:50px;
+margin: auto; }
+.otstupbuttonleft{float: left;
+	margin: 10px 20px;
+	display: inline-block;
+}
+.otstupbuttonright{float: right;
+	margin: 10px 20px;
+	display: inline-block;
+}
+.contentoverlay {
+	padding: 7rem 0;
+	  background-color:#ffffff;
+  width:90%;
+  border-radius:50px;
+  margin: auto;
+  overflow:auto; }
+
+  .limiteroverley {
+	width: 100%;
+	margin: 0 auto;
+	overflow:auto;
+  }
+
+h2 {
+  font-size: 25px; }
+
+  input {
+    text-align:center;margin: auto;
+  }
+
+table{text-decoration: none;width:90%;border-collapse: collapse;text-align:center;margin: auto;}
+        table th{font-weight:normal;font-size:20px; color:#ffffff;background-color:#132f42;}
+        table td{font-size:14px;color:#000000;}
+        table td,table th{white-space:pre-wrap;padding:15px 6px;line-height:12px;vertical-align: middle;border: 2px solid #164f78;}	table.iksweb tr:hover{background-color:#ced9e0}
+        table tr:hover td{color:#6aaede;cursor:default;}
+        .mobile-table{width: 100%; max-width: 100%; overflow-x: auto;}
+        .parent{font-weight: 700;}
+        .box {
+            display: none;
+        }
+        .box.show {
+            display: table-row;
+        }
+
+
+details summary {
+		  display: block;  /* у summary по умолчанию свойство display в значении list-item, потому поддерживается свойство list-style */
+		  width: 10em;
+		  width: -webkit-fit-content;
+		  width: -moz-fit-content;
+		  width: fit-content;  /* блок раскрывается при щелчке по кнопке, а не по всей строке */
+		  border-bottom: 1px dotted;  /* подводка точками или тире часто используется для элементов, с которыми пользователю предлагается взаимодействовать, можно заменить на text-decoration */
+		  outline-style: none;  /* удалить обводку при фокусе */
+		  cursor: pointer;
+		}
+		details summary::-webkit-details-marker {  /* нестандартный псевдоэлемент Google Chrome */
+		  display: none;
+		}
+		
+		body {
+		background: #c7b39b url(images/bg-01.jpg); /* Цвет фона и путь к файлу */
+		}
+		.floating-button {
+		  text-decoration: none;
+		  display: inline-block;
+		  width: 140px;
+		  height: 45px;
+		  line-height: 45px;
+		  border-radius: 45px;
+		  margin: 10px 20px;
+		  font-family: 'Montserrat', sans-serif;
+		  font-size: 11px;
+		  text-transform: uppercase;
+		  text-align: center;
+		  letter-spacing: 3px;
+		  font-weight: 600;
+		  color: #524f4e;
+		  background: white;
+		  box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+		  transition: .3s;
+		}
+		.floating-button:hover {
+		  background: #2EE59D;
+		  box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
+		  color: white;
+		  transform: translateY(-7px);
+		}
+		.card {
+		  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+		  max-width: 550px;
+		  margin: auto;
+		  text-align: center;
+		  font-family: Roboto;
+		  background: #c7b39b url(images/background39.png); /* Цвет фона и путь к файлу */
+		  border-radius: 50px;
+		}
+
+		.title {
+		  color: grey;
+		  font-size: 15px;
+		}
+    details summary {
+		  display: block;  /* у summary по умолчанию свойство display в значении list-item, потому поддерживается свойство list-style */
+		  width: 10em;
+		  width: -webkit-fit-content;
+		  width: -moz-fit-content;
+		  width: fit-content;  /* блок раскрывается при щелчке по кнопке, а не по всей строке */
+		  border-bottom: 1px dotted;  /* подводка точками или тире часто используется для элементов, с которыми пользователю предлагается взаимодействовать, можно заменить на text-decoration */
+		  outline-style: none;  /* удалить обводку при фокусе */
+		  cursor: pointer;
+		}
+		details summary::-webkit-details-marker {  /* нестандартный псевдоэлемент Google Chrome */
+		  display: none;
+		}
+		
+		body {
+		background: #c7b39b url(images/bg-01.jpg); /* Цвет фона и путь к файлу */
+		}
+		.floating-button {
+		  text-decoration: none;
+		  display: inline-block;
+		  width: 140px;
+		  height: 45px;
+		  line-height: 45px;
+		  border-radius: 45px;
+		  margin: 10px 20px;
+		  font-family: 'Montserrat', sans-serif;
+		  font-size: 11px;
+		  text-transform: uppercase;
+		  text-align: center;
+		  letter-spacing: 3px;
+		  font-weight: 600;
+		  color: #524f4e;
+		  background: white;
+		  box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+		  transition: .3s;
+		}
+		.floating-button:hover {
+		  background: #2EE59D;
+		  box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
+		  color: white;
+		  transform: translateY(-7px);
+		}
+	
+		
+		[data-tooltip] {
+		position: relative; /* Относительное позиционирование */ 
+	   }
+	   [data-tooltip]::after {
+		content: attr(data-tooltip); /* Выводим текст */
+		font-family: 'Montserrat', sans-serif;
+		position: absolute; /* Абсолютное позиционирование */
+		width: 100%; /* Ширина подсказки */
+		left: 0; top: 0; /* Положение подсказки */
+		background: url(images/background39.png); /* Цвет фона */
+		color: #000000; /* Цвет текста */
+		padding: 0.5em; /* Поля вокруг текста */
+		box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Параметры тени */
+		pointer-events: none; /* Подсказка */
+		opacity: 0; /* Подсказка невидима */
+		transition: 1s; /* Время появления подсказки */
+	   } 
+	   [data-tooltip]:hover::after {
+		opacity: 1; /* Показываем подсказку */
+		top: 2em; /* Положение подсказки */
+	   }
+
+	   .blockleft { float: left;
+			text-decoration: none;
+		  display: inline-block;
+		  min-width: 140px;
+		  max-width: 100%;
+		  min-height: 45px;
+		  max-height: 100%;
+		  line-height: 45px;
+		  border-radius: 45px;
+		  margin: 10px 20px;
+		  font-family: 'Montserrat', sans-serif;
+		  font-size: 11px;
+		  text-transform: uppercase;
+		  text-align: center;
+		  letter-spacing: 3px;
+		  font-weight: 600;
+		  color: #524f4e;
+		  background: white;
+		  box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+		  transition: .3s;
+		  
+		
+		}
+		.blockleft:hover {
+		  background: #2EE59D;
+		  box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
+		  color: white;
+		  transform: translateY(-7px);
+		}
+
+		.blockcenter {
+			text-decoration: none;
+		  display: inline-block;
+		  min-width: 140px;
+		  max-width: 100%;
+		  min-height: 45px;
+		  max-height: 100%;
+		  line-height: 45px;
+		  border-radius: 45px;
+		  margin: 10px 20px;
+		  font-family: 'Montserrat', sans-serif;
+		  font-size: 11px;
+		  text-transform: uppercase;
+		  text-align: center;
+		  letter-spacing: 3px;
+		  font-weight: 600;
+		  color: #524f4e;
+		  background: white;
+		  box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+		  transition: .3s;
+		
+		}
+		.blockcenter:hover {
+		  background: #2EE59D;
+		  box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
+		  color: white;
+		  transform: translateY(-7px);
+		}
+		
+		.blockright { float: right;
+			text-decoration: none;
+			display: inline-block;
+			min-width: 140px;
+			max-width: 100%;
+			min-height: 45px;
+			max-height: 100%;
+			line-height: 45px;
+			border-radius: 45px;
+			margin: 10px 20px;
+			font-family: 'Montserrat', sans-serif;
+			font-size: 11px;
+			text-transform: uppercase;
+			text-align: center;
+			letter-spacing: 3px;
+			font-weight: 600;
+			color: #524f4e;
+			background: white;
+			box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+			transition: .3s;
+		
+		}
+		.blockright:hover {
+		  background: #2EE59D;
+		  box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
+		  color: white;
+		  transform: translateY(-7px);
+		}
+
+		.overlay {
+		position: fixed;
+		z-index: 5;
+		height: 100%;
+		width: 100%;
+		top: 0;
+		left: 0;
+		background-color: rgba(0,0,0,0.6);
+		display: none;
+		}
+		.overlay.active {
+		display: block;
+		}
+		.overlay .flex-popap {
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow:auto;
+		}
+		.overlay .flex-popap .popap {
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+			max-width: 700px;
+			margin: auto;
+			text-align: center;
+			font-family: Roboto;
+			background: #c7b39b url(images/background39.png); /* Цвет фона и путь к файлу */
+			border-radius: 0;
+			overflow: auto;
+		}
+
+		.overlay .contentoverlay {
+			padding: 7rem 0;
+			background-color:#ffffff;
+			width:90%;
+			border-radius:50px;
+			margin: auto;
+			max-height: 100%;
+			overflow-y: scroll !important; }
+		
+		.overlay .limiteroverley{
+			max-height: 100%;
+			overflow-y: scroll !important;
+		}
+
+		.floating-button {
+			text-decoration: none;
+			display: inline-block;
+			width: 140px;
+			height: 45px;
+			line-height: 45px;
+			border-radius: 45px;
+			margin: 10px 20px;
+			font-family: 'Montserrat', sans-serif;
+			font-size: 11px;
+			text-transform: uppercase;
+			text-align: center;
+			letter-spacing: 3px;
+			font-weight: 600;
+			color: #524f4e;
+			background: white;
+			box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+			transition: .3s;
+		  }
+		  .floating-button:hover {
+			background: #2EE59D;
+			box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
+			color: white;
+			transform: translateY(-7px);
+		  }
+		  .card {
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+			max-width: 550px;
+			margin: auto;
+			text-align: center;
+			font-family: Roboto;
+			background: #c7b39b url(images/background39.png); /* Цвет фона и путь к файлу */
+			border-radius: 50px;
+		  }
+  
+		  .title {
+			color: grey;
+			font-size: 15px;
+		  }
+		  
+		  .floating-buttonSvod {
+			text-decoration: none;
+			display: inline-block;
+			width: 250px;
+			height: 45px;
+			line-height: 45px;
+			border-radius: 45px;
+			margin: 10px 20px;
+			font-family: 'Montserrat', sans-serif;
+			font-size: 11px;
+			text-transform: uppercase;
+			text-align: center;
+			letter-spacing: 3px;
+			font-weight: 600;
+			color: #524f4e;
+			background: white;
+			box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+			transition: .3s;
+		  }
+		  .floating-buttonSvod:hover {
+			background: #2EE59D;
+			box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
+			color: white;
+			transform: translateY(-7px);
+		  }
+		
+		  
