@@ -10,7 +10,6 @@ if (!is_dir($uploadFileDir)){ // Создаётся каждый раз при �
     mkdir($uploadFileDir,0700);}
 
 $id_ek = $_SESSION['id_ek_for_lowball'];
-file_put_contents("./upload_files/counts_fin.txt", "$id_ek, $username,$educator_id,$date,$uploadFileDir,$numfiles");
 for ($i = 0; $i < $numfiles; $i++) {
     $filename = $_FILES['files4']['name'][$i];
     var_dump($_FILES['files4']['name'][$i]);
