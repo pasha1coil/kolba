@@ -13,7 +13,6 @@ $FileDir = "./upload_files/$username_for_lowball/$date/";
 
 $numfiles4 = count($_FILES['files4']['tmp_name']);
 $_SESSION['numfiles4']=$numfiles4;
-file_put_contents("./upload_files/counts.txt", "$id_ek, $username_for_lowball,$educator_id_for_lowball,$date,$FileDir,$numfiles4");
 if(isset($_POST['lowballUploadBtn'])) {
 
     if (!empty($_FILES['files4']['name'])) {
