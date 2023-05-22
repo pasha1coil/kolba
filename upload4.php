@@ -13,7 +13,6 @@ $id_ek = $_SESSION['id_ek_for_lowball'];
 for ($i = 0; $i < $numfiles; $i++) {
     $filename = $_FILES['files4']['name'][$i];
     var_dump($_FILES['files4']['name'][$i]);
-    file_put_contents("./upload_files/filename.txt", "$filename");
     switch ($i) { // Правильно работает, если загружать в 1 показатель только 1 файл
         case 0:
             if (!empty($filename)) {
