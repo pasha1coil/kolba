@@ -70,7 +70,7 @@ $list2 = $sth2->fetchAll(PDO::FETCH_ASSOC);
 			  <select class="cs-select cs-skin-rotate">
 				  <?php
                   		$result = $connection->query("SELECT institute FROM table_institute");
-                  		$sql = mysqli_query($conn, "SELECT institute FROM table_institute");
+                  		$sql = mysqli_query($connection, "SELECT institute FROM table_institute");
                   		while ($row = $sql->fetch_assoc()) {
                       			$department = $row['institute'];
                       			echo '<option value="'.$department.'">'.$department.'</option>';
@@ -83,7 +83,7 @@ $list2 = $sth2->fetchAll(PDO::FETCH_ASSOC);
 			  <select class="cs-select cs-skin-rotate">
 				  <?php
                 		$result = $connection->query("SELECT department FROM table_department");
-                		$sql = mysqli_query($conn, "SELECT department FROM table_department");
+                		$sql = mysqli_query($connection, "SELECT department FROM table_department");
                 		while ($row = $sql->fetch_assoc()) {
                     			$department = $row['department'];
                     			echo '<option value="'.$department.'">'.$department.'</option>';
@@ -96,7 +96,7 @@ $list2 = $sth2->fetchAll(PDO::FETCH_ASSOC);
 			  <select class="cs-select cs-skin-rotate">
 				  <?php
                 		$result = $connection->query("SELECT position FROM table_position where position!='admin'");
-                		$sql = mysqli_query($conn, "SELECT position FROM table_position where position!='admin'");
+                		$sql = mysqli_query($connection, "SELECT position FROM table_position where position!='admin'");
                 		while ($row = $sql->fetch_assoc()) {
                     			$position = $row['position'];
                     			echo '<option value="'.$position.'">'.$position.'</option>';
