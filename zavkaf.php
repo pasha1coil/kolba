@@ -96,18 +96,20 @@
                                 <span class="focus-input100" data-placeholder="&#xe82a;"></span>
                             </div>
 
-                            <div>
-                            <section class = "centerposition">
-                                <label class="select-label">Выберите факультет:</label>
-                                <select class="cs-select cs-skin-rotate">
-                                    <option value="1">Пусто</option>
+
+                            
+                            <center><section >
+                                <label class="wrap-input100 validate-input">Выберите факультет:</label>
+                                <select class="input100">
+                                    <option ></option>
                                     <option value="2">Факультет 1</option>
                                     <option value="3">Факультет 2</option>
                                     <option value="4">Факультет 3</option>
                                     <option value="5">Факультет 4</option>
                                 </select>
-                            </section>
-                            </div>
+                            </section></center>
+                            
+							
 
                             <div class="wrap-input100 validate-input" data-validate = "Введите ставку">
                                 <input class="input100" type="text" name="stavka" placeholder="Ставка">

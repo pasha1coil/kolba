@@ -54,52 +54,14 @@ $list2 = $sth2->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
 <div>
-		<button class="blockleft" onclick="show_popap('modal-1')">Сводная таблица</button>
+		<a class="blockleft" href="http://localhost:8080/" target="_blank">Сводная таблица</a>
 	</div>
 	<div>
 		<button class="blockright">Выход</button>
 	</div>
 	<center><button class="floating-buttonSvod" onclick="show_popap('modal-2')">Проверенные отчёты</button></center>
 
-	<div class="overlay" id="modal-1">
-		<div class="flex-popap">
-		  <div class="popap">
-			<h2>Параметры</h2>
-			<section>
-			  <label class="select-label">Выберите факультет:</label>
-			  <select class="cs-select cs-skin-rotate">
-				  <option value="1">Пусто</option>
-				  <option value="2">Факультет 1</option>
-				  <option value="3">Факультет 2</option>
-				  <option value="4">Факультет 3</option>
-				  <option value="5">Факультет 4</option>
-			  </select>
-		  </section>
-			<section>
-			  <label class="select-label">Выберите кафедру:</label>
-			  <select class="cs-select cs-skin-rotate">
-				  <option value="1">Пусто</option>
-				  <option value="2">Кафедра 1</option>
-				  <option value="3">Кафедра 2</option>
-				  <option value="4">Кафедра 3</option>
-				  <option value="5">Кафедра 4</option>
-			  </select>
-		  </section>
-			<section>
-			  <label class="select-label">Выберите должность:</label>
-			  <select class="cs-select cs-skin-rotate">
-				  <option value="1">Пусто</option>
-				  <option value="2">Должность 1</option>
-				  <option value="3">Должность 2</option>
-				  <option value="4">Должность 3</option>
-				  <option value="5">Должность 4</option>
-			  </select>
-		  </section>
-			<center><a href="" class="floating-button">Создать</a></center>
-		  </div>
-		  </div>
-		</div>
-	</div>
+	
 
 	<div class="overlay" id="modal-2">
 		<div class="contentoverlay">
