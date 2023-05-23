@@ -68,31 +68,40 @@ $list2 = $sth2->fetchAll(PDO::FETCH_ASSOC);
 			<section>
 			  <label class="select-label">Выберите факультет:</label>
 			  <select class="cs-select cs-skin-rotate">
-				  <option value="1">Пусто</option>
-				  <option value="2">Факультет 1</option>
-				  <option value="3">Факультет 2</option>
-				  <option value="4">Факультет 3</option>
-				  <option value="5">Факультет 4</option>
+				  <?php
+                  		$result = $connection->query("SELECT institute FROM table_institute");
+                  		$sql = mysqli_query($conn, "SELECT institute FROM table_institute");
+                  		while ($row = $sql->fetch_assoc()) {
+                      			$department = $row['institute'];
+                      			echo '<option value="'.$department.'">'.$department.'</option>';
+                  			}
+                  		?>
 			  </select>
 		  </section>
 			<section>
 			  <label class="select-label">Выберите кафедру:</label>
 			  <select class="cs-select cs-skin-rotate">
-				  <option value="1">Пусто</option>
-				  <option value="2">Кафедра 1</option>
-				  <option value="3">Кафедра 2</option>
-				  <option value="4">Кафедра 3</option>
-				  <option value="5">Кафедра 4</option>
+				  <?php
+                		$result = $connection->query("SELECT department FROM table_department");
+                		$sql = mysqli_query($conn, "SELECT department FROM table_department");
+                		while ($row = $sql->fetch_assoc()) {
+                    			$department = $row['department'];
+                    			echo '<option value="'.$department.'">'.$department.'</option>';
+                			}
+                		?>
 			  </select>
 		  </section>
 			<section>
 			  <label class="select-label">Выберите должность:</label>
 			  <select class="cs-select cs-skin-rotate">
-				  <option value="1">Пусто</option>
-				  <option value="2">Должность 1</option>
-				  <option value="3">Должность 2</option>
-				  <option value="4">Должность 3</option>
-				  <option value="5">Должность 4</option>
+				  <?php
+                		$result = $connection->query("SELECT position FROM table_position where position!='admin'");
+                		$sql = mysqli_query($conn, "SELECT position FROM table_position where position!='admin'");
+                		while ($row = $sql->fetch_assoc()) {
+                    			$position = $row['position'];
+                    			echo '<option value="'.$position.'">'.$position.'</option>';
+                			}
+                		?>
 			  </select>
 		  </section>
 			<center><a href="" class="floating-button">Создать</a></center>
@@ -158,12 +167,12 @@ $list2 = $sth2->fetchAll(PDO::FETCH_ASSOC);
                       <td>
                               <?php
                               $not_checked_query = "SELECT COUNT(*) as not_checked FROM eff_contract WHERE educator_id = " . $row['educator_id'] . " AND checked = 0";
-                              $not_checked_result = mysqli_query($conn, $not_checked_query);
+                              $not_checked_result = mysqli_query($connection, $not_checked_query);
                               $not_checked = mysqli_fetch_assoc($not_checked_result);
                               echo $not_checked['not_checked'];
                               ?>/<?php
                               $all_ek_query = "SELECT COUNT(*) as all_ek FROM eff_contract WHERE educator_id = " . $row['educator_id'];
-                              $all_ek_result = mysqli_query($conn, $all_ek_query);
+                              $all_ek_result = mysqli_query($connection, $all_ek_query);
                               $all_ek = mysqli_fetch_assoc($all_ek_result);
                               echo $all_ek['all_ek'];
                               ?>
