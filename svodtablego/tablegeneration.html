@@ -1,0 +1,35 @@
+{{define "create2"}}
+<!DOCTYPE html>
+
+<style>
+	.blockright { float: center;
+		margin-right: 10%;
+		
+		}
+	.blockleft { float: left;
+		
+	}
+
+</style>
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Сводная таблица</title>
+    </head>
+    <body>
+			{{range .}}
+			<table>
+				<tr>
+					<td>{{.Last_name}}</td>
+					<td>{{.Name_real}}</td>
+					<td>{{.Patronymic}}</td>
+					<td>{{.Position}}</td>
+					<td>{{.Departament}}</td>
+					<td>{{.Ball}}</td>
+				</tr>
+				{{else}}
+			<center><h3>По вашим параметрам результатов нет</h3></center>
+			</table>
+			{{end}}
+{{end}}

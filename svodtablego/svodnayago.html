@@ -1,0 +1,117 @@
+{{define "create"}}
+<!doctype html>
+<html lang="en">
+ 
+<style>
+  
+
+table{text-decoration: none;width:90%;border-collapse: collapse;text-align:center;margin: auto;}
+        table th{font-weight:normal;font-size:20px; color:#ffffff;background-color:#132f42;}
+        table td{font-size:14px;color:#000000;}
+        table td,table th{white-space:pre-wrap;padding:15px 6px;line-height:12px;vertical-align: middle;border: 2px solid #164f78;}	table.iksweb tr:hover{background-color:#ced9e0}
+        table tr:hover td{color:#6aaede;cursor:default;}
+        .mobile-table{width: 100%; max-width: 100%; overflow-x: auto;}
+        .parent{font-weight: 700;}
+        .box {
+            display: none;
+        }
+        .box.show {
+            display: table-row;
+        }
+
+
+		.floating-button {
+			text-decoration: none;
+			display: inline-block;
+			width: 140px;
+			height: 45px;
+			line-height: 45px;
+			border-radius: 45px;
+			margin: 10px 20px;
+			font-family: 'Montserrat', sans-serif;
+			font-size: 11px;
+			text-transform: uppercase;
+			text-align: center;
+			letter-spacing: 3px;
+			font-weight: 600;
+			color: #524f4e;
+			background: white;
+			box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+			transition: .3s;
+		  }
+		  .floating-button:hover {
+			background: #2EE59D;
+			box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
+			color: white;
+			transform: translateY(-7px);
+          }
+          .mybox {
+            position: relative;
+            display: inline-block;
+            }
+          select {
+            display: inline-block;
+            height: 30px;
+            width: 150px;
+            outline: none;
+            color: #74646e;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 1px 1px 2px #999;
+            background: #eee;
+            }
+            /* Select arrow styling */
+            .mybox .myarrow{
+            width: 23px;
+            height: 28px;
+            position: absolute;
+            display: inline-block;
+            top: 1px;
+            right: 3px;
+            background: url("/uploads/media/default/0001/02/f7b4d3d2ba3fe1d8518e6e63d7740e1e73921abf.png") right / 90% no-repeat #eee;
+            pointer-events: none;
+            }
+            label {
+            color: #0a0a0a;
+            font-weight: bold;
+            display: block;
+            }
+            label:after { content: ": " }
+
+</style>
+
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Сводная таблица</title>
+    </head>
+    <body>
+        <center>
+        <h3>Сводная таблица</h3>
+        <form action = "/tablegeneration" method="Get">
+            <div>
+            <label>Выберите кафедру</label>
+            <span class="myarrow"></span>
+            <select name="department">
+                <option>По всем кафедрам</option>
+                <option>Priklad Mat</option>
+                <option>Priklad Geo</option>
+              </select>
+            </div>
+            <div>
+            <label>Выберите должность</label>
+            <span class="myarrow"></span>
+            <select name="position">
+                <option>По всем должностям</option>
+                <option>Prepodavatel</option>
+                <option>Dekan</option>
+                <option>Direktor</option>
+                <option>ZavKafedri</option>
+            </select>
+        </div>
+            <button class="floating-button">Создать</button>
+        </form>
+    </center>
+    </body>
+</html>
+{{end}}
