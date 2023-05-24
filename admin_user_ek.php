@@ -1,10 +1,14 @@
 <?php
 session_start();
-$connection =mysqli_connect('pojectkolba','root','', 'server2');
-$dbh = new PDO('mysql:dbname=server2;host=localhost', 'root', '');
+$hostname = 'kolba-main'; // Тут заменить данные на нужные
+$server_login = 'root'; // Тут заменить данные на нужные
+$server_password = ''; // Тут заменить данные на нужные
+$database = 'server2'; // Тут заменить данные на нужные
+$connection =mysqli_connect($hostname,$server_login,$server_password, $database);
+$dbh = new PDO('mysql:dbname=server2;host=kolba-main', 'root', '');// Тут заменить host на нужное
 /* Запрос в БД */
-if(isset($_GET['educator_id'])) {
-    $id = $_GET['educator_id'];}
+if(isset($_GET['id'])) {
+    $id = $_GET['id'];}
 $lastname= mysqli_query($connection,"select last_name from employees where educator_id=$id")->fetch_assoc()['last_name'];
 $firstname=mysqli_query($connection,"select name_real from employees where educator_id=$id")->fetch_assoc()['name_real'];
 $patronymic=mysqli_query($connection,"select patronymic from employees where educator_id=$id")->fetch_assoc()['patronymic'];
@@ -69,279 +73,105 @@ $list1 = $sth1->fetchAll(PDO::FETCH_ASSOC);
 	<link rel="stylesheet" type="text/css" href="css/util2.css">
 	<link rel="stylesheet" type="text/css" href="css/main2.css">
 <!--===============================================================================================-->
-	
-	<style>
-		details summary {
-		  display: block;  /* у summary по умолчанию свойство display в значении list-item, потому поддерживается свойство list-style */
-		  width: 10em;
-		  width: -webkit-fit-content;
-		  width: -moz-fit-content;
-		  width: fit-content;  /* блок раскрывается при щелчке по кнопке, а не по всей строке */
-		  border-bottom: 1px dotted;  /* подводка точками или тире часто используется для элементов, с которыми пользователю предлагается взаимодействовать, можно заменить на text-decoration */
-		  outline-style: none;  /* удалить обводку при фокусе */
-		  cursor: pointer;
-		}
-		details summary::-webkit-details-marker {  /* нестандартный псевдоэлемент Google Chrome */
-		  display: none;
-		}
-		
-		body {
-		background: #c7b39b url(images/bg-01.jpg); /* Цвет фона и путь к файлу */
-		}
-		.floating-button {
-		  text-decoration: none;
-		  display: inline-block;
-		  width: 140px;
-		  height: 45px;
-		  line-height: 45px;
-		  border-radius: 45px;
-		  margin: 10px 20px;
-		  font-family: 'Montserrat', sans-serif;
-		  font-size: 11px;
-		  text-transform: uppercase;
-		  text-align: center;
-		  letter-spacing: 3px;
-		  font-weight: 600;
-		  color: #524f4e;
-		  background: white;
-		  box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
-		  transition: .3s;
-		}
-		.floating-button:hover {
-		  background: #2EE59D;
-		  box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
-		  color: white;
-		  transform: translateY(-7px);
-		}
-		.card {
-		  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-		  max-width: 550px;
-		  margin: auto;
-		  text-align: center;
-		  font-family: Roboto;
-		  background: #c7b39b url(images/background39.png); /* Цвет фона и путь к файлу */
-		  border-radius: 50px;
-		}
-
-		.title {
-		  color: grey;
-		  font-size: 15px;
-		}
-		
-		#myInput {
-		  background-image: url('/css/searchicon.png');
-		  background-position: 10px 10px;
-		  background-repeat: no-repeat;
-		  width: 100%;
-		  font-size: 16px;
-		  padding: 12px 20px 12px 40px;
-		  border: 1px solid #ddd;
-		  margin-bottom: 12px;
-		}
-		
-		.floating-buttonSvod {
-		  text-decoration: none;
-		  display: inline-block;
-		  width: 250px;
-		  height: 45px;
-		  line-height: 45px;
-		  border-radius: 45px;
-		  margin: 10px 20px;
-		  font-family: 'Montserrat', sans-serif;
-		  font-size: 11px;
-		  text-transform: uppercase;
-		  text-align: center;
-		  letter-spacing: 3px;
-		  font-weight: 600;
-		  color: #524f4e;
-		  background: white;
-		  box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
-		  transition: .3s;
-		}
-		.floating-buttonSvod:hover {
-		  background: #2EE59D;
-		  box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
-		  color: white;
-		  transform: translateY(-7px);
-		}
-		
-	</style>
-	
-	<script>
-   	function filter (phrase, _id){
-		var words = phrase.value.toLowerCase().split(" ");
-		var table = document.getElementById(_id);
-		var ele;
-		for (var r = 1; r < table.rows.length; r++){
-			ele = table.rows[r].innerHTML.replace(/<[^>]+>/g,"");
-		        var displayStyle = 'none';
-		        for (var i = 0; i < words.length; i++) {
-			    if (ele.toLowerCase().indexOf(words[i])>=0)
-				displayStyle = '';
-			    else {
-				displayStyle = 'none';
-				break;
-			    }
-		        }
-			table.rows[r].style.display = displayStyle;
-		}
-	}
-</script>
 
 <body>
+<button class="blockleft" onclick="show_popap('modal-1')">Профиль</button>
+<button class="blockright">Выход</button>
+<center><button class="floating-buttonSvod" onclick="show_popap('modal-2')">Проверенные отчёты</button></center>
 
-	<div>
-		<center>
-
-            <div class="card">
-                <h3>Профиль</h3>
-                <p class="title"><?php echo $lastname, ' ', $firstname, ' ', $patronymic; ?></p>
-                <h3 class="title">Должность</h3>
+	<div class="overlay" id="modal-1">
+		<div class="flex-popap">
+		  <div class="popap">
+				<h1>ФИО</h1>
+				<p class="title"><?php echo $lastname, ' ', $firstname, ' ', $patronymic; ?></p>
+                <p class="title">Должность</p>
                 <p class="title"><?php echo $position; ?></p>
-                <h3 class="title">Факультет</h3>
+                <p class="title">Факультет</p>
                 <p class="title"><?php echo $department; ?></p>
-                <h3 class="title">Ставка</h3>
+                <p class="title">Ставка</p>
                 <p class="title"><?php echo $stavka,' ', 'руб.'; ?></p>
-                <p>Российский государственный гидрометеорологический университет</p>
-
-
-            </div>
-
-		</center>
+				<button class="blockleft" onclick="close_popap('modal-1')">Закрыть</button>
+				<button class="blockleft">История</button>
+		  </div>
+		</div>
 	</div>
-	
-	<div>
-		<center>
-		<details>
-		<summary class="floating-buttonSvod">Проверенные отчёты</summary>
-		
-		<div class="content">
-    
-			<div class="container">
-			  
-				<input class="form-control" type="text" placeholder="Параметры для фильтрации" id="search-text" onkeyup="filter(this, 'sf1')">
-			  
 
-			<div class="table-responsive custom-table-responsive">
-
-				<table id = "sf1" class="table custom-table">
-				  <thead>
+	<div class="overlay" id="modal-2">
+		<div class="contentoverlay">
+			<div class="popap">
+				<table id = 'sf1'>
+					<input class="form-control" type="text" placeholder="Параметры для фильтрации" id="search-text" onkeyup="filter(this, 'sf1')">
 					<tr>
-                        <th scope="col">
-                            <label class="control control--checkbox">
+						<td td scope="row">
+							<label class="control control--checkbox">
                                 <input type="checkbox"  class="js-check-all"/>
                                 <div class="control__indicator"></div>
                             </label>
-                        </th>
-                        <th scope="col"><center>Номер ЭК</center></th>
-                        <th scope="col"><center>Номер документа</center></th>
-                        <th scope="col"><center>Пункт ЭК</center></th>
-                        <th scope="col"><center>Время отправки</center></th>
-                        <!--<th scope="col"><center>Институт</center></th>-->
-                        <th scope="col"><center>Кол-во баллов</center></th>
+						</td>
+						<td>Номер ЭК</td>
+						<td>Номер документа</td>
+						<td>Пункт ЭК</td>
+						<td>Время отправки</td>
+						<td>Кол-во баллов</td>
 					</tr>
-				  </thead>
-				  <tbody>
-                  <?php foreach ($list1 as $row1): ?>
-                      <tr scope="row">
-                          <th scope="row">
+
+					<?php foreach ($list1 as $row1): ?>
+                      <tr>
+                          <td scope="row">
                               <label class="control control--checkbox">
                                   <input type="checkbox"/>
                                   <div class="control__indicator"></div>
                               </label>
-                          </th>
-                          <td>
-                              <center><?php echo $row1['id_ek']; ?></center>
                           </td>
-                          <td>
-                              <center><?php echo $row1['id_doc']; ?></center>
-                          </td>
-                          <td>
-                              <center><?php echo $row1['id_index']; ?></center>
-                          </td>
-                          <td>
-                              <center><?php echo $row1['id_period']; ?></center>
-                          </td>
-                          <td>
-                              <center><?php echo $row1['value']; ?></center>
-                          </td>
-                          <td><center><a href="" class="floating-button">Редактировать</a></center></td> <!--Комментарий: Исправить путь на нужный-->
+                          <td><?php echo $row1['id_ek']; ?></td>
+                          <td><?php echo $row1['id_doc']; ?></td>
+                          <td><?php echo $row1['id_index']; ?></td>
+                          <td><?php echo $row1['id_period']; ?></td>
+                          <td><?php echo $row1['value']; ?></td>
+                          <td><a href="" class="floating-button">Редактировать</a></td> <!--Комментарий: Исправить путь на нужный-->
                       </tr>
                       <tr class="spacer"><td colspan="100"></td></tr>
                   <?php endforeach; ?>
-				  </tbody>
 				</table>
-			  </div>
-			  
-		  </div>
+				<center><button class="floating-buttonSvod" onclick="close_popap('modal-2')">Закрыть</button></center>
+			</div>
 		</div>
-		</details>
-		</center>
 	</div>
-	
+
 	<div class="content">
-    
-    <div class="container">
-        <h2 class="mb-5"><center>НЕПРОВЕРЕННЫЕ ДОКУМЕНТЫ</center></h2>
-	  
-		<input class="form-control" type="text" placeholder="Параметры для фильтрации" id="search-text" onkeyup="filter(this, 'sf2')">
-      
+			<table id="sf2">
+				
+				<th colspan="7"><h2 class="mb-5"><center>Отчеты</center></h2></th>
+				<tr>
+					<td></td>
+					<td>ФИО</td>
+					<td>Должность</td>
+					<td>Кафедра</td>
+					<td>Дата загрузки</td>
+					<td>Кол-во непроверенных отчётов / Всего отчётов</td>
+					<td>Скачать отчёт</td>
+				</tr>
 
-      <div class="table-responsive custom-table-responsive">
-
-        <table id = "sf2" class="table custom-table">
-          <thead>
-            <tr>  
-
-              <th scope="col">
-                <label class="control control--checkbox">
-                  <input type="checkbox"  class="js-check-all"/>
-                  <div class="control__indicator"></div>
-                </label>
-              </th>
-                <th scope="col"><center>Номер ЭК</center></th>
-              <th scope="col"><center>Номер документа</center></th>
-              <th scope="col"><center>Пункт ЭК</center></th>
-              <th scope="col"><center>Время отправки</center></th>
-              <!--<th scope="col"><center>Институт</center></th>-->
-              <th scope="col"><center>Кол-во баллов</center></th>
-			  <th scope="col"><center>Редактирование отчёта</center></th>
-            </tr>
-          </thead>
-          <tbody>
-          <?php foreach ($list as $row): ?>
-            <tr scope="row">
-              <th scope="row">
-                <label class="control control--checkbox">
-                  <input type="checkbox"/>
-                  <div class="control__indicator"></div>
-                </label>
-              </th>
-                <td>
-                    <center><?php echo $row['id_ek']; ?></center>
-                </td>
-              <td>
-                 <center><?php echo $row['id_doc']; ?></center>
-              </td>
-              <td>
-                  <center><?php echo $row['id_index']; ?></center>
-              </td>
-              <td>
-                  <center><?php echo $row['id_period']; ?></center>
-              </td>
-              <td>
-                  <center><?php echo $row['value']; ?></center>
-              </td>
-                <td><center><a href="./upload_files/<?php echo $row['login']; ?>/<?php echo $row['date']; ?>/<?php echo $row['section']; ?>/<?php echo $row['file_name']; ?>" class="floating-button" target="_blank">Скачать</a></center></td> <!--Комментарий: Исправить путь на нужный-->
-            </tr>
-            <tr class="spacer"><td colspan="100"></td></tr>
-          <?php endforeach; ?>
-          </tbody>
-        </table>
-      </div>
-    </div>
+				<?php foreach ($list as $row): ?>
+				<tr>
+					<td scope="row">
+						<label class="control control--checkbox">
+						<input type="checkbox"/>
+						<div class="control__indicator"></div>
+						</label>
+					</td>
+					<td><?php echo $row['id_ek']; ?></td>
+					<td><?php echo $row['id_doc']; ?></td>
+					<td><?php echo $row['id_index']; ?></td>
+					<td><?php echo $row['id_period']; ?></td>
+					<td><?php echo $row['value']; ?></td>
+                    <td><center><a href="./upload_files/<?php echo $row['login']; ?>/<?php echo $row['date']; ?>/<?php echo $row['section']; ?>/<?php echo $row['file_name']; ?>" class="floating-button" target="_blank">Скачать</a></center></td>
+            	</tr>
+          		<?php endforeach; ?>
+			</table>
+	</div>
 	<center><a class="floating-button">Подтвердить</a></center>
-
+	
 	  
   </div>
 
@@ -360,12 +190,7 @@ $list1 = $sth1->fetchAll(PDO::FETCH_ASSOC);
 <!--===============================================================================================-->
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-	<script src="js/main2.js"></script>
-	
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
+	<script src="js/schitalka.js"></script>
 
 </body>
 </html>

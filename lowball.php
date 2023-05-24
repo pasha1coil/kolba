@@ -1,7 +1,11 @@
 <?php
 session_start();
-$connection =mysqli_connect('pojectkolba','root','', 'server2');
-$dbh = new PDO('mysql:dbname=server2;host=localhost', 'root', '');
+$hostname = 'kolba-main'; // Тут заменить данные на нужные
+$server_login = 'root'; // Тут заменить данные на нужные
+$server_password = ''; // Тут заменить данные на нужные
+$database = 'server2'; // Тут заменить данные на нужные
+$connection =mysqli_connect($hostname,$server_login,$server_password, $database);
+$dbh = new PDO('mysql:dbname=server2;host=kolba-main', 'root', '');// Тут заменить host на нужное
 if(isset($_GET['id_ek'])) {
     $id = $_GET['id_ek'];
     $_SESSION['id_ek_for_lowball']=$id;}
@@ -52,71 +56,8 @@ $stavka=mysqli_query($connection,"select stavka from employees where educator_id
 	<link rel="stylesheet" type="text/css" href="css/util2.css">
 	<link rel="stylesheet" type="text/css" href="css/main2.css">
 <!--===============================================================================================-->
-	
-	<style>
-		details summary {
-		  display: block;  /* у summary по умолчанию свойство display в значении list-item, потому поддерживается свойство list-style */
-		  width: 10em;
-		  width: -webkit-fit-content;
-		  width: -moz-fit-content;
-		  width: fit-content;  /* блок раскрывается при щелчке по кнопке, а не по всей строке */
-		  border-bottom: 1px dotted;  /* подводка точками или тире часто используется для элементов, с которыми пользователю предлагается взаимодействовать, можно заменить на text-decoration */
-		  outline-style: none;  /* удалить обводку при фокусе */
-		  cursor: pointer;
-		}
-		details summary::-webkit-details-marker {  /* нестандартный псевдоэлемент Google Chrome */
-		  display: none;
-		}
-		
-		body {
-		background: #c7b39b url(images/bg-01.jpg); /* Цвет фона и путь к файлу */
-		}
-		.floating-button {
-		  text-decoration: none;
-		  display: inline-block;
-		  width: 140px;
-		  height: 45px;
-		  line-height: 45px;
-		  border-radius: 45px;
-		  margin: 10px 20px;
-		  font-family: 'Montserrat', sans-serif;
-		  font-size: 11px;
-		  text-transform: uppercase;
-		  text-align: center;
-		  letter-spacing: 3px;
-		  font-weight: 600;
-		  color: #524f4e;
-		  background: white;
-		  box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
-		  transition: .3s;
-		}
-		.floating-button:hover {
-		  background: #2EE59D;
-		  box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
-		  color: white;
-		  transform: translateY(-7px);
-		}
-		.card {
-		  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-		  max-width: 550px;
-		  margin: auto;
-		  text-align: center;
-		  font-family: Roboto;
-		  background: #c7b39b url(images/background39.png); /* Цвет фона и путь к файлу */
-		  border-radius: 50px;
-		}
-
-		.title {
-		  color: grey;
-		  font-size: 15px;
-		}
-		
-	</style>
-	
-	
-
-    <title>Понижающие показатели</title>
-  </head>
+<title>Понижающие показатели</title>
+<center><button class="floating-button">Назад</button></center>
   <body>
   <form method="POST" action="upload_lowball.php" enctype="multipart/form-data">
 	<div class="content">
@@ -140,14 +81,14 @@ $stavka=mysqli_query($connection,"select stavka from employees where educator_id
         </center>
 
     <div class="container">
-      
+
 
       <div class="table-responsive custom-table-responsive">
 
         <table class="table custom-table">
 		<h2 class="mb-5"><center>Понижающие показатели</center></h2>
           <thead>
-            <tr>              
+            <tr>
               <th scope="col"><center>Показатели</center></th>
               <th scope="col"><center>Загрузить файлы</center></th>
             </tr>
@@ -157,92 +98,89 @@ $stavka=mysqli_query($connection,"select stavka from employees where educator_id
               <td>
                 Срыв занятий по дисциплинам кафедры
               </td>
-              
+
 			 <td><center><fieldset align = "right"><p><input type="file" name="files4[]"></p></fieldset></center></td>
-			  
+
             </tr>
             <tr class="spacer"><td colspan="100"></td></tr>
 			<tr scope="row">
               <td>
                 Опоздание на занятие
               </td>
-              
+
 			 <td><center><fieldset align = "right"><p><input type="file" name="files4[]"></p></fieldset></center></td>
-			  
+
             </tr>
             <tr class="spacer"><td colspan="100"></td></tr>
 			<tr scope="row">
               <td>
                 Уменьшение контингента студентов обучающихся за счет бюджета РФ
               </td>
-              
+
 			 <td><center><fieldset align = "right"><p><input type="file" name="files4[]"></p></fieldset></center></td>
-			  
+
             </tr>
             <tr class="spacer"><td colspan="100"></td></tr>
 			<tr scope="row">
               <td>
                 Невыполнение студентами требований Интернет-экзамена по дисциплине, прочитанной преподавателем, менее допустимого предела
               </td>
-              
+
 			 <td><center><fieldset align = "right"><p><input type="file" name="files4[]"></p></fieldset></center></td>
-			  
+
             </tr>
             <tr class="spacer"><td colspan="100"></td></tr>
 			<tr scope="row">
               <td>
                 За ненадлежащее обеспечение воспитательного процесса
               </td>
-              
+
 			 <td><center><fieldset align = "right"><p><input type="file" name="files4[]"></p></fieldset></center></td>
-			  
+
             </tr>
             <tr class="spacer"><td colspan="100"></td></tr>
 			<tr scope="row">
               <td>
                 Замечание, оформленное приказом ректора
               </td>
-              
+
 			 <td><center><fieldset align = "right"><p><input type="file" name="files4[]"></p></fieldset></center></td>
-			  
+
             </tr>
             <tr class="spacer"><td colspan="100"></td></tr>
 			<tr scope="row">
               <td>
                 Выговор, оформленный приказом ректора
               </td>
-              
+
 			 <td><center><fieldset align = "right"><p><input type="file" name="files4[]"></p></fieldset></center></td>
-			  
+
             </tr>
             <tr class="spacer"><td colspan="100"></td></tr>
 			<tr scope="row">
               <td>
                 Предоставление недостоверной информации
               </td>
-              
+
 			 <td><center><fieldset align = "right"><p><input type="file" name="files4[]"></p></fieldset></center></td>
-			  
+
             </tr>
             <tr class="spacer"><td colspan="100"></td></tr>
 			<tr scope="row">
               <td>
                 Несвоевременное выполнение решений ректората, установленных сроков сдачи отчетности
               </td>
-              
+
 			 <td><center><fieldset align = "right"><p><input type="file" name="files4[]"></p></fieldset></center></td>
-			  
+
             </tr>
-            <tr class="spacer"><td colspan="100"></td></tr>
-            
 		</table>
-		</tbody>
       </div>	
     </div>
         <center><input name="lowballUploadBtn" type='submit' value="Отправить" href="" class="floating-button"/></center>
 	</div>
     </form>
-    
+
 
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
@@ -259,12 +197,7 @@ $stavka=mysqli_query($connection,"select stavka from employees where educator_id
 <!--===============================================================================================-->
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
-	<script src="js/main2.js"></script>
-	
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
+	<script src="js/schitalka.js"></script>
 
   </body>
 </html>

@@ -1,7 +1,11 @@
 <?php
 session_start();
-$connection =mysqli_connect('projectkolba','root','', 'server2');
-$dbh = new PDO('mysql:dbname=server2;host=projectkolba', 'root', '');
+$hostname = 'kolba-main'; // Тут заменить данные на нужные
+$server_login = 'root'; // Тут заменить данные на нужные
+$server_password = ''; // Тут заменить данные на нужные
+$database = 'server2'; // Тут заменить данные на нужные
+$connection =mysqli_connect($hostname,$server_login,$server_password, $database);
+$dbh = new PDO('mysql:dbname=server2;host=kolba-main', 'root', '');// Тут заменить host на нужное
 /* Запрос в БД */
 $sth = $dbh->prepare("SELECT * FROM employees where position!='admin'");
 $sth->execute();
@@ -54,61 +58,14 @@ $list2 = $sth2->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
 <div>
-		<button class="blockleft" onclick="show_popap('modal-1')">Сводная таблица</button>
+		<a class="blockleft" href="http://localhost:8080/" target="_blank">Сводная таблица</a>
 	</div>
 	<div>
 		<button class="blockright">Выход</button>
 	</div>
 	<center><button class="floating-buttonSvod" onclick="show_popap('modal-2')">Проверенные отчёты</button></center>
 
-	<div class="overlay" id="modal-1">
-		<div class="flex-popap">
-		  <div class="popap">
-			<h2>Параметры</h2>
-			<section>
-			  <label class="select-label">Выберите факультет:</label>
-			  <select class="cs-select cs-skin-rotate">
-				  <?php
-                  		$result = $connection->query("SELECT institute FROM table_institute");
-                  		$sql = mysqli_query($connection, "SELECT institute FROM table_institute");
-                  		while ($row = $sql->fetch_assoc()) {
-                      			$department = $row['institute'];
-                      			echo '<option value="'.$department.'">'.$department.'</option>';
-                  			}
-                  		?>
-			  </select>
-		  </section>
-			<section>
-			  <label class="select-label">Выберите кафедру:</label>
-			  <select class="cs-select cs-skin-rotate">
-				  <?php
-                		$result = $connection->query("SELECT department FROM table_department");
-                		$sql = mysqli_query($connection, "SELECT department FROM table_department");
-                		while ($row = $sql->fetch_assoc()) {
-                    			$department = $row['department'];
-                    			echo '<option value="'.$department.'">'.$department.'</option>';
-                			}
-                		?>
-			  </select>
-		  </section>
-			<section>
-			  <label class="select-label">Выберите должность:</label>
-			  <select class="cs-select cs-skin-rotate">
-				  <?php
-                		$result = $connection->query("SELECT position FROM table_position where position!='admin'");
-                		$sql = mysqli_query($connection, "SELECT position FROM table_position where position!='admin'");
-                		while ($row = $sql->fetch_assoc()) {
-                    			$position = $row['position'];
-                    			echo '<option value="'.$position.'">'.$position.'</option>';
-                			}
-                		?>
-			  </select>
-		  </section>
-			<center><a href="" class="floating-button">Создать</a></center>
-		  </div>
-		  </div>
-		</div>
-	</div>
+	
 
 	<div class="overlay" id="modal-2">
 		<div class="contentoverlay">
