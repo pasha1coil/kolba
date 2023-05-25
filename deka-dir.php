@@ -69,7 +69,7 @@ $list = $sth->fetchAll(PDO::FETCH_ASSOC);
 
   <body>
   <button class="blockleft" onclick="show_popap('modal-1')">Профиль</button>
-  <button class="blockright">Выход</button>	
+  <button class="blockright" onclick="location.href='logout.php';">Выход</button>
   
   <div class="overlay" id="modal-1">
 		<div class="flex-popap">

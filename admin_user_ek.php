@@ -76,7 +76,7 @@ $list1 = $sth1->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
 <button class="blockleft" onclick="show_popap('modal-1')">Профиль</button>
-<button class="blockright">Выход</button>
+<button class="blockright"  onclick="location.href='adminpanel.php';">Назад</button>
 <center><button class="floating-buttonSvod" onclick="show_popap('modal-2')">Проверенные отчёты</button></center>
 
 	<div class="overlay" id="modal-1">

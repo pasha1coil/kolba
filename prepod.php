@@ -54,7 +54,7 @@ $_SESSION['educator_id'] = $educator_id;
     <title>Преподаватели</title>
 	<body>
 	<button class="blockleft" onclick="show_popap('modal-1')">Профиль</button>
-	<button class="blockright">Выход</button>
+	<button class="blockright" onclick="location.href='logout.php';">Выход</button>
 
 	<div class="overlay" id="modal-1">
 		<div class="flex-popap">
@@ -930,8 +930,6 @@ $_SESSION['educator_id'] = $educator_id;
 		</div>
 			<center><input name="uploadBtn" type='submit' value="Отправить" href="" class="floating-button"/></center>
 	</form>
-    
-    
 
 <!--===============================================================================================-->
 <script src="vendor/jquery/jquery-3.2.1.min.js"></script>

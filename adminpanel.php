@@ -61,7 +61,7 @@ $list2 = $sth2->fetchAll(PDO::FETCH_ASSOC);
 		<a class="blockleft" href="http://localhost:8080/" target="_blank">Сводная таблица</a>
 	</div>
 	<div>
-		<button class="blockright">Выход</button>
+		<button class="blockright"  onclick="location.href='logout.php';">Выход</button>
 	</div>
 	<center><button class="floating-buttonSvod" onclick="show_popap('modal-2')">Проверенные отчёты</button></center>
 
