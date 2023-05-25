@@ -51,10 +51,23 @@ $_SESSION['educator_id'] = $educator_id;
 	<link rel="stylesheet" type="text/css" href="css/main2.css">
 <!--===============================================================================================-->	
 
+
+<script>
+	function a (){ //ни к чему не привязана! нужно привязать
+		let arr = [];
+		var  cFiles
+		for (var i = 1; i<79; i++){
+			arr.push(document.getElementsByClassName(i).files.length)
+		}
+		console.log(arr); //arr - spisok peremennaya
+	}
+</script>
+
+
     <title>Преподаватели</title>
 	<body>
 	<button class="blockleft" onclick="show_popap('modal-1')">Профиль</button>
-	<button class="blockright">Выход</button>
+	<button class="blockright" onclick="location.href='logout.php';">Выход</button>
 
 	<div class="overlay" id="modal-1">
 		<div class="flex-popap">
@@ -91,7 +104,7 @@ $_SESSION['educator_id'] = $educator_id;
 					<td><input type="number" id="first1" oninput="mult(1,'first1','result1')" placeholder="__________"></td>
 					<td>Количество экспертиз</td>
 					<td id="result1"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files1[]"></td>
+					<td><fieldset id = "1" align = "right"><p><input type="file" name="files1[]"></td>
 					</tr>
 					<tr>
 					<td>1.2</td>
@@ -99,7 +112,7 @@ $_SESSION['educator_id'] = $educator_id;
 					<td><input type="number" id="first2" oninput="mult(2,'first2','result2')" placeholder="__________"></td>
 					<td>Количество штук</td>
 					<td id="result2"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files1[]"></td>
+					<td><fieldset id = "2" align = "right"><p><input type="file" name="files1[]"></td>
 					</tr>
 					<tr class="parent">
 						<td class="control control--checkbox">
@@ -112,7 +125,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td><input type="number" id="first3" oninput="mult(10,'first3','result3')" placeholder="__________"></td>
 						<td>Количество штук</td>
 						<td id="result3"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files1[]"></td>
+					<td><fieldset id = "3" align = "right"><p><input type="file" name="files1[]"></td>
 					</tr>
 					<tr class="box">
 						<td>1.3.2</td>
@@ -121,7 +134,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество штук</td>
 						
 						<td id="result4"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files1[]"></td>
+					<td><fieldset id = "4" align = "right"><p><input type="file" name="files1[]"></td>
 					</tr>
 					<tr class="parent">
 						<td class="control control--checkbox">
@@ -139,7 +152,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество печатных листов</td>
 						
 						<td id="result5"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files1[]"></td>
+					<td><fieldset id = "5" align = "right"><p><input type="file" name="files1[]"></td>
 					</tr>
 					<tr class="box">
 						<td>1.4.3</td>
@@ -148,7 +161,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество печатных листов</td>
 						
 						<td id="result6"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files1[]"></td>
+					<td><fieldset id = "6" align = "right"><p><input type="file" name="files1[]"></td>
 					</tr>
 					<tr class="box">
 						<td>1.4.4</td>
@@ -161,7 +174,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество печатных листов</td>
 						
 						<td id="result7"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files1[]"></td>
+					<td><fieldset id = "7" align = "right"><p><input type="file" name="files1[]"></td>
 					</tr>
 					<tr class="box">
 						<td>1.4.6</td>
@@ -170,7 +183,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество печатных листов</td>
 						
 						<td id="result8"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files1[]"></td>
+					<td><fieldset id = "8" align = "right"><p><input type="file" name="files1[]"></td>
 					</tr>
 					<tr class="parent">
 						<td class="control control--checkbox">
@@ -184,7 +197,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество учебников</td>
 						
 						<td id="result9"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files1[]"></td>
+					<td><fieldset id = "9" align = "right"><p><input type="file" name="files1[]"></td>
 					</tr>
 					<tr class="box">
 						<td>1.5.2</td>
@@ -193,7 +206,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество учебников</td>
 						
 						<td id="result10"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files1[]"></td>
+					<td><fieldset id = "10" align = "right"><p><input type="file" name="files1[]"></td>
 					</tr>
 					<tr>
 						<td>1.6</td>
@@ -202,7 +215,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество курсов</td>
 						
 						<td id="result11"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files1[]"></td>
+					<td><fieldset id = "11" align = "right"><p><input type="file" name="files1[]"></td>
 					</tr>
 					<tr class="parent">
 						<td class="control control--checkbox">
@@ -216,7 +229,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество пособий</td>
 						
 						<td id="result12"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files1[]"></td>
+					<td><fieldset id = "12" align = "right"><p><input type="file" name="files1[]"></td>
 					</tr>
 					<tr class="box">
 						<td>1.7.2</td>
@@ -225,7 +238,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество пособий</td>
 						
 						<td id="result13"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files1[]"></td>
+					<td><fieldset id = "13" align = "right"><p><input type="file" name="files1[]"></td>
 					</tr>
 					<tr class="box">
 						<td>1.7.3</td>
@@ -234,7 +247,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество пособий</td>
 						
 						<td id="result14"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files1[]"></td>
+					<td><fieldset id = "14" align = "right"><p><input type="file" name="files1[]"></td>
 					</tr>
 					<tr>
 						<td>1.8.</td>
@@ -243,7 +256,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество штук</td>
 						
 						<td id="result15"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files1[]"></td>
+					<td><fieldset id = "15" align = "right"><p><input type="file" name="files1[]"></td>
 					</tr>
 					<tr class="parent">
 						<td class="control control--checkbox">
@@ -257,7 +270,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество олимпиад</td>
 						
 						<td id="result16"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files1[]"></td>
+					<td><fieldset id = "16" align = "right"><p><input type="file" name="files1[]"></td>
 					</tr>
 					<tr class="box">
 						<td>1.9.2</td>
@@ -266,7 +279,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество олимпиад</td>
 						
 						<td id="result17"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files1[]"></td>
+					<td><fieldset id = "17" align = "right"><p><input type="file" name="files1[]"></td>
 					</tr>
 					<tr class="box">
 						<td>1.9.3</td>
@@ -275,7 +288,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество олимпиад</td>
 						
 						<td id="result18"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files1[]"></td>
+					<td><fieldset id = "18" align = "right"><p><input type="file" name="files1[]"></td>
 					</tr>
 					<tr>
 						<td>1.10</td>
@@ -284,7 +297,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Цифра</td>
 						
 						<td id="result19"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files1[]"></td>
+					<td><fieldset id = "19" align = "right"><p><input type="file" name="files1[]"></td>
 					</tr>
 					<tr>
 						<td>1.11</td>
@@ -293,7 +306,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество процентов</td>
 						
 						<td id="result20"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files1[]"></td>
+					<td><fieldset id = "20" align = "right"><p><input type="file" name="files1[]"></td>
 					</tr>
 					<tr>
 						<td>1.12</td>
@@ -302,7 +315,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество процентов</td>
 						
 						<td id="result21"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files1[]"></td>
+					<td><fieldset id = "21" align = "right"><p><input type="file" name="files1[]"></td>
 					</tr>
 					<tr class="parent">
 						<td class="control control--checkbox">
@@ -316,7 +329,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество штук</td>
 						
 						<td id="result22"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files1[]"></td>
+					<td><fieldset id = "22" align = "right"><p><input type="file" name="files1[]"></td>
 					</tr>
 					<tr class="box">
 						<td>1.13.2</td>
@@ -325,7 +338,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество штук</td>
 						
 						<td id="result23"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files1[]"></td>
+					<td><fieldset id = "23" align = "right"><p><input type="file" name="files1[]"></td>
 					</tr>
 					<tr>
 						<td>1.14</td>
@@ -334,7 +347,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество штук</td>
 						
 						<td id="result24"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files1[]"></td>
+					<td><fieldset id = "24" align = "right"><p><input type="file" name="files1[]"></td>
 					</tr>
 					<tr class="parent">
 						<td class="control control--checkbox">
@@ -348,7 +361,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество монографии</td>
 						
 						<td id="result25"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files1[]"></td>
+					<td><fieldset id = "25" align = "right"><p><input type="file" name="files1[]"></td>
 					</tr>
 					<tr class="box">
 						<td>1.15.2</td>
@@ -357,7 +370,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество монографии</td>
 						
 						<td id="result26"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files1[]"></td>
+					<td><fieldset id = "26" align = "right"><p><input type="file" name="files1[]"></td>
 					</tr>
 					<tr>
 						<td>1.16</td>
@@ -366,7 +379,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество раз</td>
 						
 						<td id="result27"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files1[]"></td>
+					<td><fieldset id = "27" align = "right"><p><input type="file" name="files1[]"></td>
 					</tr>
 					<th colspan="6"><h2 class="mb-5"><center>НАУЧНО-ИССЛЕДОВАТЕЛЬСКАЯ РАБОТА</center></h2></th>
 					<tr class="parent">
@@ -381,7 +394,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Цифра</td>
 						
 						<td id="result28"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "28" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="box">
 						<td>2.1.2</td>
@@ -390,7 +403,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Цифра</td>
 						
 						<td id="result29"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "29" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="parent">
 						<td class="control control--checkbox">
@@ -404,7 +417,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество человек</td>
 						
 						<td id="result30"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "30" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="parent">
 						<td class="control control--checkbox">
@@ -418,7 +431,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество человек</td>
 						
 						<td id="result31"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "31" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="box">
 						<td>2.3.2</td>
@@ -427,7 +440,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество человек</td>
 						
 						<td id="result32"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "32" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="parent">
 						<td class="control control--checkbox">
@@ -441,7 +454,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество штук</td>
 						
 						<td id="result33"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "33" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="box">
 						<td>2.4.2</td>
@@ -450,7 +463,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество штук</td>
 						
 						<td id="result34"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "34" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="box">
 						<td>2.4.3</td>
@@ -459,7 +472,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество штук</td>
 						
 						<td id="result35"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "35" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="parent">
 						<td class="control control--checkbox">
@@ -473,7 +486,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Цифра</td>
 						
 						<td id="result36"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "36" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="box">
 						<td>2.5.2</td>
@@ -482,7 +495,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Цифра</td>
 						
 						<td id="result37"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "37" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="box">
 						<td>2.5.3</td>
@@ -491,7 +504,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Цифра</td>
 						
 						<td id="result38"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "38" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="parent">
 						<td class="control control--checkbox">
@@ -505,7 +518,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество штук</td>
 						
 						<td id="result39"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "39" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="box">
 						<td>2.6.2</td>
@@ -514,7 +527,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество штук</td>
 						
 						<td id="result40"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "40" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="box">
 						<td>2.6.3</td>
@@ -523,7 +536,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество штук</td>
 						
 						<td id="result41"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "41" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="parent">
 						<td class="control control--checkbox">
@@ -537,7 +550,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество процентов</td>
 						
 						<td id="result42"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "42" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="box">
 						<td>2.7.2</td>
@@ -546,7 +559,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество процентов</td>
 						
 						<td id="result43"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "43" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="box">
 						<td>2.7.3</td>
@@ -555,7 +568,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество процентов</td>
 						
 						<td id="result44"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "44" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr>
 						<td>2.8</td>
@@ -564,7 +577,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество штук</td>
 						
 						<td id="result45"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "45" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr>
 						<td>2.9</td>
@@ -573,7 +586,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество штук</td>
 						
 						<td id="result46"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "46" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="parent">
 						<td class="control control--checkbox">
@@ -587,7 +600,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество штук</td>
 						
 						<td id="result47"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "47" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="box">
 						<td>2.10.2</td>
@@ -596,7 +609,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество штук</td>
 						
 						<td id="result48"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "48" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="box">
 						<td>2.10.3</td>
@@ -605,7 +618,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество штук</td>
 						
 						<td id="result49"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "49" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="parent">
 						<td class="control control--checkbox">
@@ -619,7 +632,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество штук</td>
 						
 						<td id="result50"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "50" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="box">
 						<td>2.11.2</td>
@@ -628,7 +641,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество штук</td>
 						
 						<td id="result51"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "51" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="box">
 						<td>2.11.3</td>
@@ -637,7 +650,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество штук</td>
 						
 						<td id="result52"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "52" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr>
 						<td>2.12</td>
@@ -646,7 +659,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>h-index</td>
 						
 						<td id="result53"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "53" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr>
 						<td>2.13</td>
@@ -655,7 +668,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество баллов РИНЦ</td>
 						
 						<td id="result54"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "54" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="parent">
 						<td class="control control--checkbox">
@@ -669,7 +682,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество отзывов</td>
 						
 						<td id="result55"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "55" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="box">
 						<td>2.14.2</td>
@@ -678,7 +691,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество отзывов</td>
 						
 						<td id="result56"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "56" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="parent">
 						<td class="control control--checkbox">
@@ -692,7 +705,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество штук</td>
 						
 						<td id="result57"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "57" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="box">
 						<td>2.15.2</td>
@@ -701,7 +714,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество штук</td>
 						
 						<td id="result58"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "58" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr>
 						<td>2.16</td>
@@ -710,7 +723,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество штук</td>
 						
 						<td id="result59"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "59" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="parent">
 						<td class="control control--checkbox">
@@ -724,7 +737,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество штук</td>
 						
 						<td id="result60"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "60" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="box">
 						<td>2.17.2</td>
@@ -733,7 +746,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество штук</td>
 						
 						<td id="result61"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "61" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="box">
 						<td>2.17.3</td>
@@ -742,7 +755,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество штук</td>
 						
 						<td id="result62"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "62" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr>
 						<td>2.18</td>
@@ -751,7 +764,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество рублей</td>
 						
 						<td id="result63"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "63" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr>
 						<td>2.19</td>
@@ -760,7 +773,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество рублей</td>
 						
 						<td id="result64"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "64" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr>
 						<td>2.20</td>
@@ -769,7 +782,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Цифра</td>
 						
 						<td id="result65"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "65" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="parent">
 						<td class="control control--checkbox">
@@ -783,7 +796,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Цифра</td>
 						
 						<td id="result66"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "66" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<tr class="box">
 						<td>2.21.2</td>
@@ -792,7 +805,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Цифра</td>
 						
 						<td id="result67"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files2[]"></td>
+					<td><fieldset id = "67" align = "right"><p><input type="file" name="files2[]"></td>
 					</tr>
 					<th colspan="6"><h2 class="mb-5"><center>УЧЕБНО - ВОСПИТАТЕЛЬНАЯ РАБОТА</center></h2></th>
 					<tr class="parent">
@@ -807,7 +820,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество процентов</td>
 						
 						<td id="result68"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files3[]"></td>
+					<td><fieldset id = "68" align = "right"><p><input type="file" name="files3[]"></td>
 					</tr>
 					<tr class="box">
 						<td>3.1.2</td>
@@ -816,7 +829,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество процентов</td>
 						
 						<td id="result69"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files3[]"></td>
+					<td><fieldset id = "69" align = "right"><p><input type="file" name="files3[]"></td>
 					</tr>
 					<tr class="box">
 						<td>3.1.3</td>
@@ -825,7 +838,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество процентов</td>
 						
 						<td id="result70"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files3[]"></td>
+					<td><fieldset id = "70" align = "right"><p><input type="file" name="files3[]"></td>
 					</tr>
 					<tr class="parent">
 						<td class="control control--checkbox">
@@ -839,7 +852,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество процентов</td>
 						
 						<td id="result71"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files3[]"></td>
+					<td><fieldset id = "71" align = "right"><p><input type="file" name="files3[]"></td>
 					</tr>
 					<tr class="box">
 						<td>3.2.2</td>
@@ -848,7 +861,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество процентов</td>
 						
 						<td id="result72"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files3[]"></td>
+					<td><fieldset id = "72" align = "right"><p><input type="file" name="files3[]"></td>
 					</tr>
 					<tr class="box">
 						<td>3.2.3</td>
@@ -857,7 +870,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество процентов</td>
 						
 						<td id="result73"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files3[]"></td>
+					<td><fieldset id = "73" align = "right"><p><input type="file" name="files3[]"></td>
 					</tr>
 					<tr>
 						<td>3.3</td>
@@ -866,7 +879,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество групп</td>
 						
 						<td id="result74"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files3[]"></td>
+					<td><fieldset id = "74" align = "right"><p><input type="file" name="files3[]"></td>
 					</tr>
 					<tr>
 						<td>3.4</td>
@@ -875,7 +888,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество комманд</td>
 						
 						<td id="result75"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files3[]"></td>
+					<td><fieldset id = "75" align = "right"><p><input type="file" name="files3[]"></td>
 					</tr>
 					<tr class="parent">
 						<td class="control control--checkbox">
@@ -889,7 +902,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Цифра</td>
 						
 						<td id="result76"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files3[]"></td>
+					<td><fieldset id = "76" align = "right"><p><input type="file" name="files3[]"></td>
 					</tr>
 					<tr class="box">
 						<td>3.5.2</td>
@@ -898,7 +911,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Цифра</td>
 						
 						<td id="result77"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files3[]"></td>
+					<td><fieldset id = "77" align = "right"><p><input type="file" name="files3[]"></td>
 					</tr>
 					<tr class="box">
 						<td>3.5.3</td>
@@ -907,7 +920,7 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Цифра</td>
 						
 						<td id="result78"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files3[]"></td>
+					<td><fieldset id = "78" align = "right"><p><input type="file" name="files3[]"></td>
 					</tr>
 					<tr>
 						<td>3.6</td>
@@ -916,11 +929,11 @@ $_SESSION['educator_id'] = $educator_id;
 						<td>Количество штук</td>
 						
 						<td id="result79"></td>
-					<td><fieldset align = "right"><p><input type="file" name="files3[]"></td>
+					<td><fieldset id = "79" align = "right"><p><input type="file" name="files3[]"></td>
 					</tr>
 					<tr>
 						<td></td>
-						<td><button class="floating-button" onclick="sumballAll()">Кол-во баллов</button></td>
+						<td><a class="floating-button" name="sumBall" onclick="sumballAll()">Кол-во баллов</a></td>
 						<td colspan="3">Предполагаемое количество баллов:</td>
 						<td><label id='result'></label></td>
 					</tr>
@@ -930,8 +943,6 @@ $_SESSION['educator_id'] = $educator_id;
 		</div>
 			<center><input name="uploadBtn" type='submit' value="Отправить" href="" class="floating-button"/></center>
 	</form>
-    
-    
 
 <!--===============================================================================================-->
 <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
