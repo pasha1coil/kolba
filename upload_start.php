@@ -28,9 +28,6 @@ $_SESSION['id_ek']=$id_ek;
 if (!is_dir($FileDir)){
     mkdir($FileDir,0700);}
 
-$a=count($_FILES['files1']['name']).' '.count($_FILES['files2']['name']).' '.count($_FILES['files3']['name']);
-file_put_contents($FileDir.'arr.txt',$a);
-
 if(isset($_POST['uploadBtn'])) {
 
     $file1Count = count($_FILES['files1']['name']);
