@@ -1,7 +1,11 @@
 <?php
 session_start();
-$connection =mysqli_connect('projectkolba','root','', 'server2');
-$dbh = new PDO('mysql:dbname=server2;host=projectkolba', 'root', '');
+$hostname = 'kolba-main'; // Тут заменить данные на нужные
+$server_login = 'root'; // Тут заменить данные на нужные
+$server_password = ''; // Тут заменить данные на нужные
+$database = 'server2'; // Тут заменить данные на нужные
+$connection =mysqli_connect($hostname,$server_login,$server_password, $database);
+$dbh = new PDO('mysql:dbname=server2;host=kolba-main', 'root', '');// Тут заменить host на нужное
 /* Запрос в БД */
 if(isset($_GET['id'])) {
     $id = $_GET['id'];}
@@ -12,11 +16,13 @@ $position=mysqli_query($connection,"select position from employees where educato
 $department=mysqli_query($connection,"select department from employees where educator_id=$id")->fetch_assoc()['department'];
 $stavka=mysqli_query($connection,"select stavka from employees where educator_id=$id")->fetch_assoc()['stavka'];
 
-$sth = $dbh->prepare("SELECT *
+$sth = $dbh->prepare("SELECT DISTINCT docs.*, eff_contract.checked, employees.login, DATE_FORMAT(docs.id_period, '%y-%m-%d') AS date, LEFT(docs.id_index, 1) AS section
 FROM docs
-INNER JOIN eff_contract 
-ON docs.educator_id = eff_contract.educator_id 
-where docs.educator_id=$id and checked=0");
+INNER JOIN eff_contract ON docs.educator_id = eff_contract.educator_id
+INNER JOIN employees ON employees.educator_id = docs.educator_id
+WHERE docs.educator_id = $id AND eff_contract.checked = 0;
+;
+");
 $sth->execute();
 $list = $sth->fetchAll(PDO::FETCH_ASSOC);
 
@@ -70,7 +76,7 @@ $list1 = $sth1->fetchAll(PDO::FETCH_ASSOC);
 
 <body>
 <button class="blockleft" onclick="show_popap('modal-1')">Профиль</button>
-<button class="blockright">Выход</button>
+<button class="blockright"  onclick="location.href='adminpanel.php';">Назад</button>
 <center><button class="floating-buttonSvod" onclick="show_popap('modal-2')">Проверенные отчёты</button></center>
 
 	<div class="overlay" id="modal-1">
@@ -159,7 +165,7 @@ $list1 = $sth1->fetchAll(PDO::FETCH_ASSOC);
 					<td><?php echo $row['id_index']; ?></td>
 					<td><?php echo $row['id_period']; ?></td>
 					<td><?php echo $row['value']; ?></td>
-					<td><a href="" class="floating-button">Редактировать</a></td> <!--Комментарий: Исправить путь на нужный-->
+                    <td><center><a href="./upload_files/<?php echo $row['login']; ?>/<?php echo $row['date']; ?>/<?php echo $row['section']; ?>/<?php echo $row['file_name']; ?>" class="floating-button" target="_blank">Скачать</a></center></td>
             	</tr>
           		<?php endforeach; ?>
 			</table>

@@ -1,7 +1,11 @@
 <?php
 session_start();
-$connection =mysqli_connect('projectkolba','root','', 'server2');
-$dbh = new PDO('mysql:dbname=server2;host=projectkolba', 'root', '');
+$hostname = 'kolba-main'; // Тут заменить данные на нужные
+$server_login = 'root'; // Тут заменить данные на нужные
+$server_password = ''; // Тут заменить данные на нужные
+$database = 'server2'; // Тут заменить данные на нужные
+$connection =mysqli_connect($hostname,$server_login,$server_password, $database);
+$dbh = new PDO('mysql:dbname=server2;host=kolba-main', 'root', '');// Тут заменить host на нужное
 /* Запрос в БД */
 $sth = $dbh->prepare("SELECT * FROM employees where position!='admin'");
 $sth->execute();
@@ -57,7 +61,7 @@ $list2 = $sth2->fetchAll(PDO::FETCH_ASSOC);
 		<a class="blockleft" href="http://localhost:8080/" target="_blank">Сводная таблица</a>
 	</div>
 	<div>
-		<button class="blockright">Выход</button>
+		<button class="blockright"  onclick="location.href='logout.php';">Выход</button>
 	</div>
 	<center><button class="floating-buttonSvod" onclick="show_popap('modal-2')">Проверенные отчёты</button></center>
 
@@ -120,12 +124,12 @@ $list2 = $sth2->fetchAll(PDO::FETCH_ASSOC);
                       <td>
                               <?php
                               $not_checked_query = "SELECT COUNT(*) as not_checked FROM eff_contract WHERE educator_id = " . $row['educator_id'] . " AND checked = 0";
-                              $not_checked_result = mysqli_query($conn, $not_checked_query);
+                              $not_checked_result = mysqli_query($connection, $not_checked_query);
                               $not_checked = mysqli_fetch_assoc($not_checked_result);
                               echo $not_checked['not_checked'];
                               ?>/<?php
                               $all_ek_query = "SELECT COUNT(*) as all_ek FROM eff_contract WHERE educator_id = " . $row['educator_id'];
-                              $all_ek_result = mysqli_query($conn, $all_ek_query);
+                              $all_ek_result = mysqli_query($connection, $all_ek_query);
                               $all_ek = mysqli_fetch_assoc($all_ek_result);
                               echo $all_ek['all_ek'];
                               ?>
