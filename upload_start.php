@@ -28,17 +28,49 @@ $_SESSION['id_ek']=$id_ek;
 if (!is_dir($FileDir)){
     mkdir($FileDir,0700);}
 
-
+$a=count($_FILES['files1']['name']).' '.count($_FILES['files2']['name']).' '.count($_FILES['files3']['name']);
+file_put_contents($FileDir.'arr.txt',$a);
 
 if(isset($_POST['uploadBtn'])) {
 
-    if (!empty($_FILES['files1']['name'])) {
+    $file1Count = count($_FILES['files1']['name']);
+    $uploadedFiles1 = 0;
+    $file2Count = count($_FILES['files2']['name']);
+    $uploadedFiles2 = 0;
+    $file3Count = count($_FILES['files3']['name']);
+    $uploadedFiles3 = 0;
+
+    for ($i = 0; $i < $file1Count; $i++) {
+        $fileName = $_FILES['files1']['name'][$i];
+
+        if ($_FILES['files1']['error'][$i] == UPLOAD_ERR_OK && !empty($fileName)) {
+            // Файл загружен и не пустой
+            $uploadedFiles1++;
+        }
+    }
+    for ($i = 0; $i < $file2Count; $i++) {
+        $fileName = $_FILES['files2']['name'][$i];
+
+        if ($_FILES['files2']['error'][$i] == UPLOAD_ERR_OK && !empty($fileName)) {
+            // Файл загружен и не пустой
+            $uploadedFiles2++;
+        }
+    }
+    for ($i = 0; $i < $file3Count; $i++) {
+        $fileName = $_FILES['files3']['name'][$i];
+
+        if ($_FILES['files3']['error'][$i] == UPLOAD_ERR_OK && !empty($fileName)) {
+            // Файл загружен и не пустой
+            $uploadedFiles3++;
+        }
+    }
+    if ($uploadedFiles1>0) {
         require_once("upload1.php"); // Загрузка файлов УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА
     }
-    if (!empty($_FILES['files2']['name'])) {
+    if ($uploadedFiles2>0) {
         require_once("upload2.php"); // Загрузка файлов УЧЕБНО - ВОСПИТАТЕЛЬНАЯ РАБОТА
     }
-    if (!empty($_FILES['files3']['name'])) {
+    if ($uploadedFiles3>0) {
         require_once("upload3.php"); // Загрузка файлов НАУЧНО-ИССЛЕДОВАТЕЛЬСКАЯ РАБОТА
     }
 }
