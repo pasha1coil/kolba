@@ -9,7 +9,7 @@ $uploadFileDir = "./upload_files/$username/$date/1/"; // Путь загрузк
 /*file_put_contents("./upload_files/$username/$date/1/counts.txt", "count = $countfiles");*/
 
 
-$id_ek=$_SESSION['id_ek'];
+$id_ek = intval($_SESSION['id_ek'][0]);
 
 if (!is_dir($uploadFileDir)){ // Создаётся каждый раз при нажатии кнопки. Лучше доработать
     mkdir($uploadFileDir,0700);}
@@ -18,87 +18,274 @@ for ($i = 0; $i < $numfiles; $i++) {
     /*move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . $i .' '. $filename);*/
     switch ($i) { // Правильно работает, если загружать в 1 показатель только 1 файл
         case 0:
-            move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.1' . ' ' . $filename);
-            $query = "INSERT INTO docs (id_ek, educator_id,id_index,count,value) values ('$id_ek','$educator_id',100, 1, 1)";
-            $result = mysqli_query($connection, $query); /*Комментарий: перепроверить загрузку в бд*/
+            if (!empty($filename)) {
+                move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.1' . ' ' . $filename);
+                $query = "INSERT INTO docs (id_ek, educator_id, id_index, count, value, file_name) VALUES ('$id_ek','$educator_id',100, 1, 1,'1.1 $filename')";
+                $result = mysqli_query($connection, $query);
+                if (!$result) {
+                    echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                }
+            }
             break;
         case 1:
-            move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.2' . ' ' . $filename);
+            if (!empty($filename)) {
+                move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.2' . ' ' . $filename);
+                $query = "INSERT INTO docs (id_ek, educator_id,id_index,count,value,file_name) values ('$id_ek','$educator_id',101, 1, 2,'1.2 $filename')";
+                $result = mysqli_query($connection, $query);
+                if (!$result) {
+                    echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                }
+            }
             break;
         case 2:
-            move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.3.1' . ' ' . $filename);
+            if (!empty($filename)) {
+                move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.3.1' . ' ' . $filename);
+                $query = "INSERT INTO docs (id_ek, educator_id,id_index,count,value,file_name) values ('$id_ek','$educator_id',102, 1, 10,'1.3.1 $filename')";
+                $result = mysqli_query($connection, $query);
+                if (!$result) {
+                    echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                }
+            }
             break;
         case 3:
-            move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.3.2' . ' ' . $filename);
+            if (!empty($filename)) {
+                move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.3.2' . ' ' . $filename);
+                $query = "INSERT INTO docs (id_ek, educator_id,id_index,count,value,file_name) values ('$id_ek','$educator_id',103, 1, 5,'1.3.2 $filename')";
+                $result = mysqli_query($connection, $query);
+                if (!$result) {
+                    echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                }
+            }
             break;
         case 4:
-            move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.4.2' . ' ' . $filename);
+            if (!empty($filename)) {
+                move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.4.2' . ' ' . $filename);
+                $query = "INSERT INTO docs (id_ek, educator_id,id_index,count,value,file_name) values ('$id_ek','$educator_id',104, 1, 2,'1.4.2 $filename')";
+                $result = mysqli_query($connection, $query);
+                if (!$result) {
+                    echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                }
+            }
             break;
         case 5:
-            move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.4.3' . ' ' . $filename);
+            if (!empty($filename)) {
+                move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.4.3' . ' ' . $filename);
+                $query = "INSERT INTO docs (id_ek, educator_id,id_index,count,value,file_name) values ('$id_ek','$educator_id',105, 1, 2,'1.4.3 $filename')";
+                $result = mysqli_query($connection, $query);
+                if (!$result) {
+                    echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                }
+            }
             break;
         case 6:
-            move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.4.5' . ' ' . $filename);
+            if (!empty($filename)) {
+                move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.4.5' . ' ' . $filename);
+                $query = "INSERT INTO docs (id_ek, educator_id,id_index,count,value,file_name) values ('$id_ek','$educator_id',106, 1, 2,'1.4.5 $filename')";
+                $result = mysqli_query($connection, $query);
+                if (!$result) {
+                    echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                }
+            }
             break;
         case 7:
-            move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.4.6' . ' ' . $filename);
+            if (!empty($filename)) {
+                move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.4.6' . ' ' . $filename);
+                $query = "INSERT INTO docs (id_ek, educator_id,id_index,count,value,file_name) values ('$id_ek','$educator_id',107, 1, 1,'1.4.6 $filename')";
+                $result = mysqli_query($connection, $query);
+                if (!$result) {
+                    echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                }
+            }
             break;
         case 8:
-            move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.5.1' . ' ' . $filename);
+            if (!empty($filename)) {
+                move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.5.1' . ' ' . $filename);
+                $query = "INSERT INTO docs (id_ek, educator_id,id_index,count,value,file_name) values ('$id_ek','$educator_id',108, 1, 7,'1.5.1 $filename')";
+                $result = mysqli_query($connection, $query);
+                if (!$result) {
+                    echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                }
+            }
             break;
         case 9:
-            move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.5.2' . ' ' . $filename);
+            if (!empty($filename)) {
+                move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.5.2' . ' ' . $filename);
+                $query = "INSERT INTO docs (id_ek, educator_id,id_index,count,value,file_name) values ('$id_ek','$educator_id',109, 1, 3,'1.5.2 $filename')";
+                $result = mysqli_query($connection, $query);
+                if (!$result) {
+                    echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                }
+            }
             break;
         case 10:
-            move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.6' . ' ' . $filename);
+            if (!empty($filename)) {
+                move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.6' . ' ' . $filename);
+                $query = "INSERT INTO docs (id_ek, educator_id,id_index,count,value,file_name) values ('$id_ek','$educator_id',110, 1, 2,'1.6 $filename')";
+                $result = mysqli_query($connection, $query);
+                if (!$result) {
+                    echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                }
+            }
             break;
         case 11:
-            move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.7.1' . ' ' . $filename);
+            if (!empty($filename)) {
+                move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.7.1' . ' ' . $filename);
+                $query = "INSERT INTO docs (id_ek, educator_id, id_index, count, value, file_name) VALUES ('$id_ek','$educator_id',111, 1, 0.5,'1.7.1 $filename')";
+                $result = mysqli_query($connection, $query);
+                if (!$result) {
+                    echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                }
+            }
             break;
         case 12:
-            move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.7.2' . ' ' . $filename);
+            if (!empty($filename)) {
+                move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.7.2' . ' ' . $filename);
+                $query = "INSERT INTO docs (id_ek, educator_id,id_index,count,value,file_name) values ('$id_ek','$educator_id',112, 1, 0.5,'1.7.2 $filename')";
+                $result = mysqli_query($connection, $query);
+                if (!$result) {
+                    echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                }
+            }
             break;
         case 13:
-            move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.7.3' . ' ' . $filename);
+            if (!empty($filename)) {
+                move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.7.3' . ' ' . $filename);
+                $query = "INSERT INTO docs (id_ek, educator_id,id_index,count,value,file_name) values ('$id_ek','$educator_id',113, 1, 0.5,'1.7.3 $filename')";
+                $result = mysqli_query($connection, $query);
+                if (!$result) {
+                    echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                }
+            }
             break;
         case 14:
-            move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.8' . ' ' . $filename);
+            if (!empty($filename)) {
+                move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.8' . ' ' . $filename);
+                $query = "INSERT INTO docs (id_ek, educator_id,id_index,count,value,file_name) values ('$id_ek','$educator_id',114, 1, 0.5,'1.8 $filename')";
+                $result = mysqli_query($connection, $query);
+                if (!$result) {
+                    echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                }
+            }
             break;
         case 15:
-            move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.9.1' . ' ' . $filename);
+            if (!empty($filename)) {
+                move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.9.1' . ' ' . $filename);
+                $query = "INSERT INTO docs (id_ek, educator_id,id_index,count,value,file_name) values ('$id_ek','$educator_id',115, 1, 2,'1.9.1 $filename')";
+                $result = mysqli_query($connection, $query);
+                if (!$result) {
+                    echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                }
+            }
             break;
         case 16:
-            move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.9.2' . ' ' . $filename);
+            if (!empty($filename)) {
+                move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.9.2' . ' ' . $filename);
+                $query = "INSERT INTO docs (id_ek, educator_id,id_index,count,value,file_name) values ('$id_ek','$educator_id',116, 1, 2,'1.9.2 $filename')";
+                $result = mysqli_query($connection, $query);
+                if (!$result) {
+                    echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                }
+            }
             break;
         case 17:
-            move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.9.3' . ' ' . $filename);
+            if (!empty($filename)) {
+                move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.9.3' . ' ' . $filename);
+                $query = "INSERT INTO docs (id_ek, educator_id,id_index,count,value,file_name) values ('$id_ek','$educator_id',117, 1, 1,'1.9.3 $filename')";
+                $result = mysqli_query($connection, $query);
+                if (!$result) {
+                    echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                }
+            }
             break;
         case 18:
-            move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.10' . ' ' . $filename);
+            if (!empty($filename)) {
+                move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.10' . ' ' . $filename);
+                $query = "INSERT INTO docs (id_ek, educator_id,id_index,count,value,file_name) values ('$id_ek','$educator_id',118, 1, 5,'1.10 $filename')";
+                $result = mysqli_query($connection, $query);
+                if (!$result) {
+                    echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                }
+            }
             break;
         case 19:
-            move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.11' . ' ' . $filename);
+            if (!empty($filename)) {
+                move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.11' . ' ' . $filename);
+                $query = "INSERT INTO docs (id_ek, educator_id,id_index,count,value,file_name) values ('$id_ek','$educator_id',119, 1, 2,'1.11 $filename')";
+                $result = mysqli_query($connection, $query);
+                if (!$result) {
+                    echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                }
+            }
             break;
         case 20:
-            move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.12' . ' ' . $filename);
+            if (!empty($filename)) {
+                move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.12' . ' ' . $filename);
+                $query = "INSERT INTO docs (id_ek, educator_id,id_index,count,value,file_name) values ('$id_ek','$educator_id',120, 1, 2,'1.12 $filename')";
+                $result = mysqli_query($connection, $query);
+                if (!$result) {
+                    echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                }
+            }
             break;
         case 21:
-            move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.13.1' . ' ' . $filename);
+            if (!empty($filename)) {
+                move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.13.1' . ' ' . $filename);
+                $query = "INSERT INTO docs (id_ek, educator_id,id_index,count,value,file_name) values ('$id_ek','$educator_id',121, 1, 3,'1.13.1 $filename')";
+                $result = mysqli_query($connection, $query);
+                if (!$result) {
+                    echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                }
+            }
             break;
         case 22:
-            move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.13.2' . ' ' . $filename);
+            if (!empty($filename)) {
+                move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.13.2' . ' ' . $filename);
+                $query = "INSERT INTO docs (id_ek, educator_id,id_index,count,value,file_name) values ('$id_ek','$educator_id',122, 1, 2,'1.13.2 $filename')";
+                $result = mysqli_query($connection, $query);
+                if (!$result) {
+                    echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                }
+            }
             break;
         case 23:
-            move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.14' . ' ' . $filename);
+            if (!empty($filename)) {
+                move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.14' . ' ' . $filename);
+                $query = "INSERT INTO docs (id_ek, educator_id,id_index,count,value,file_name) values ('$id_ek','$educator_id',123, 1, 1,'1.14 $filename')";
+                $result = mysqli_query($connection, $query);
+                if (!$result) {
+                    echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                }
+            }
             break;
         case 24:
-            move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.15.1' . ' ' . $filename);
+            if (!empty($filename)) {
+                move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.15.1' . ' ' . $filename);
+                $query = "INSERT INTO docs (id_ek, educator_id,id_index,count,value,file_name) values ('$id_ek','$educator_id',124, 1, 10,'1.15.1 $filename')";
+                $result = mysqli_query($connection, $query);
+                if (!$result) {
+                    echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                }
+            }
             break;
         case 25:
-            move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.15.2' . ' ' . $filename);
+            if (!empty($filename)) {
+                move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.15.2' . ' ' . $filename);
+                $query = "INSERT INTO docs (id_ek, educator_id,id_index,count,value,file_name) values ('$id_ek','$educator_id',125, 1, 5,'1.15.2 $filename')";
+                $result = mysqli_query($connection, $query);
+                if (!$result) {
+                    echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                }
+            }
             break;
         case 26:
-            move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.16' . ' ' . $filename);
+            if (!empty($filename)) {
+                move_uploaded_file($_FILES['files1']['tmp_name'][$i], $uploadFileDir . '1.16' . ' ' . $filename);
+                $query = "INSERT INTO docs (id_ek, educator_id,id_index,count,value,file_name) values ('$id_ek','$educator_id',126, 1, 0.5,'1.16 $filename')";
+                $result = mysqli_query($connection, $query);
+                if (!$result) {
+                    echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                }
+            }
             break;
     }
 }

@@ -6,8 +6,8 @@ $username_for_lowball = mysqli_query($connection, "SELECT login FROM employees W
 $_SESSION['username_for_lowball'] = $username_for_lowball;
 $educator_id_for_lowball = mysqli_query($connection, "SELECT educator_id FROM eff_contract WHERE id_ek = $id_ek")->fetch_assoc()['educator_id'];
 $_SESSION['educator_id_for_lowball'] = $educator_id_for_lowball;
-$date = mysqli_query($connection, "SELECT TRIM(SUBSTRING_INDEX(t.column_name, ' ', 1)) AS date 
-                    FROM (SELECT id_period AS column_name FROM docs WHERE `id_ek` = $id_ek) AS t LIMIT 0, 50;")->fetch_assoc()['date'];
+$date = mysqli_query($connection, "SELECT DATE_FORMAT(docs.id_period, '%y-%m-%d') AS date 
+                    FROM docs WHERE `id_ek` = $id_ek;")->fetch_assoc()['date'];
 $_SESSION['date'] = $date;
 $FileDir = "./upload_files/$username_for_lowball/$date/";
 
