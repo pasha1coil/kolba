@@ -13,7 +13,7 @@ $id_ek=mysqli_query($connection,"select id_ek from eff_contract where educator_i
 
 $_SESSION['educator_id'] = $educator_id;
 
-$dbh = new PDO('mysql:dbname=server2;host=kolba-main', 'root', '');// Тут заменить host на нужное
+$dbh = new PDO('mysql:dbname=server2;host=kolba', 'root', '');// Тут заменить host на нужное
 $pos = $_POST['selector'];
 echo $pos;
 /* Запрос в БД */

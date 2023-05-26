@@ -1,11 +1,11 @@
 <?php
 session_start();
-$hostname = 'kolba-main'; // Тут заменить данные на нужные
+$hostname = 'kolba'; // Тут заменить данные на нужные
 $server_login = 'root'; // Тут заменить данные на нужные
 $server_password = ''; // Тут заменить данные на нужные
 $database = 'server2'; // Тут заменить данные на нужные
 $connection =mysqli_connect($hostname,$server_login,$server_password, $database);
-$dbh = new PDO('mysql:dbname=server2;host=kolba-main', 'root', '');// Тут заменить host на нужное
+$dbh = new PDO('mysql:dbname=server2;host=kolba', 'root', '');// Тут заменить host на нужное
 /* Запрос в БД */
 $sth = $dbh->prepare("SELECT * FROM employees where position!='admin'");
 $sth->execute();
