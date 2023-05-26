@@ -105,10 +105,10 @@ $list = $sth->fetchAll(PDO::FETCH_ASSOC);
                     <table id = 'sf'>
                         <input class="form-control" type="text" placeholder="Параметры для фильтрации" id="search-text" onkeyup="filter(this, 'sf')">
                         <tr>
-                            <th><center>ФИО</center></td>
-                            <th><center>Должность</center></td>
-                            <th><center>Номер ЭК</center></td>
-                            <th><center>Добавить Понижающие показатели</center></td>
+                            <th><center>ФИО</center></th>
+                            <th><center>Должность</center></th>
+                            <th><center>Номер ЭК</center></th>
+                            <th><center>Добавить Понижающие показатели</center></th>
                         </tr>
                     <?php foreach ($list as $row): ?>
                         <tr>
@@ -125,7 +125,7 @@ $list = $sth->fetchAll(PDO::FETCH_ASSOC);
         </form>
 	</div>
 
-    <form method="POST" action="upload.php" enctype="multipart/form-data">
+    <form method="POST" action="upload_stert.php" enctype="multipart/form-data">
         <div class="content">
         <table>
 			<th colspan="6"><h2 class="mb-5"><center>УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА</center></h2></th>

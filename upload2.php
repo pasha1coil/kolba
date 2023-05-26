@@ -136,7 +136,7 @@ for ($i = 0; $i < $numfiles; $i++) {
 }
 
 echo '<script type="text/javascript"> // Переход на главный файл
-window.location.href ="upload.php";
+window.location.href ="upload_end.php";
 </script>';
 
 

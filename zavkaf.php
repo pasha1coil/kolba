@@ -164,7 +164,7 @@
                 </div>
 			</div>
 	</div>
-    <form method="POST" action="upload.php" enctype="multipart/form-data">
+    <form method="POST" action="upload_start.php" enctype="multipart/form-data">
         <div class="content">
         <table>
 			<th colspan="6"><h2 class="mb-5"><center>УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА</center></h2></th>

@@ -85,7 +85,7 @@ $_SESSION['educator_id'] = $educator_id;
 		  </div>
 		</div>
 	</div>
-	<form method="POST" action="upload.php" enctype="multipart/form-data">
+	<form method="POST" action="upload_start.php" enctype="multipart/form-data">
 	<div class="otstup"></div>
 		<div class="content">
 				<table>
