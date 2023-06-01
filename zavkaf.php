@@ -976,7 +976,7 @@
 			  <tr class="box">
 				<td>3.5.1</td>
 				<td>1-место/td>
-				<td><input type="number" id="first9" oninput="mult(10,'first76','result76')" placeholder="__________"></td>
+				<td><input type="number" id="first76" oninput="mult(10,'first76','result76')" placeholder="__________"></td>
 				<td>Цифра</td>
 				
 				<td id="result76"></td>

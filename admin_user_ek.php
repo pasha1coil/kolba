@@ -16,11 +16,12 @@ $position=mysqli_query($connection,"select position from employees where educato
 $department=mysqli_query($connection,"select department from employees where educator_id=$id")->fetch_assoc()['department'];
 $stavka=mysqli_query($connection,"select stavka from employees where educator_id=$id")->fetch_assoc()['stavka'];
 
-$sth = $dbh->prepare("SELECT DISTINCT docs.*, eff_contract.checked, employees.login, DATE_FORMAT(docs.id_period, '%y-%m-%d') AS date, LEFT(docs.id_index, 1) AS section
+$sth = $dbh->prepare("SELECT DISTINCT docs.*, eff_contract.checked, employees.login, DATE_FORMAT(docs.id_period, '%y-%m-%d') AS date, LEFT(docs.id_index, 1) AS section, table_index.name AS index_name
 FROM docs
 INNER JOIN eff_contract ON docs.educator_id = eff_contract.educator_id
 INNER JOIN employees ON employees.educator_id = docs.educator_id
-WHERE docs.educator_id = $id AND eff_contract.checked = 0;
+INNER JOIN table_index ON table_index.`id index` = docs.id_index
+WHERE docs.educator_id = $id AND eff_contract.checked = 0;;
 ;
 ");
 $sth->execute();
@@ -102,12 +103,6 @@ $list1 = $sth1->fetchAll(PDO::FETCH_ASSOC);
 				<table id = 'sf1'>
 					<input class="form-control" type="text" placeholder="Параметры для фильтрации" id="search-text" onkeyup="filter(this, 'sf1')">
 					<tr>
-						<td td scope="row">
-							<label class="control control--checkbox">
-                                <input type="checkbox"  class="js-check-all"/>
-                                <div class="control__indicator"></div>
-                            </label>
-						</td>
 						<td>Номер ЭК</td>
 						<td>Номер документа</td>
 						<td>Пункт ЭК</td>
@@ -125,7 +120,7 @@ $list1 = $sth1->fetchAll(PDO::FETCH_ASSOC);
                           </td>
                           <td><?php echo $row1['id_ek']; ?></td>
                           <td><?php echo $row1['id_doc']; ?></td>
-                          <td><?php echo $row1['id_index']; ?></td>
+                          <td><?php echo $row1['index_name']; ?></td>
                           <td><?php echo $row1['id_period']; ?></td>
                           <td><?php echo $row1['value']; ?></td>
                           <td><a href="" class="floating-button">Редактировать</a></td> <!--Комментарий: Исправить путь на нужный-->
@@ -142,15 +137,15 @@ $list1 = $sth1->fetchAll(PDO::FETCH_ASSOC);
 			<table id="sf2">
 				
 				<th colspan="7"><h2 class="mb-5"><center>Отчеты</center></h2></th>
-				<tr>
-					<td></td>
-					<td>ФИО</td>
-					<td>Должность</td>
-					<td>Кафедра</td>
-					<td>Дата загрузки</td>
-					<td>Кол-во непроверенных отчётов / Всего отчётов</td>
-					<td>Скачать отчёт</td>
-				</tr>
+                <tr>
+                    <td>Выбор документов</td>
+                    <td>Номер ЭК</td>
+                    <td>Номер документа</td>
+                    <td>Пункт ЭК</td>
+                    <td>Время отправки</td>
+                    <td>Кол-во баллов</td>
+                    <td>Скачать документы</td>
+                </tr>
 
 				<?php foreach ($list as $row): ?>
 				<tr>
@@ -162,7 +157,7 @@ $list1 = $sth1->fetchAll(PDO::FETCH_ASSOC);
 					</td>
 					<td><?php echo $row['id_ek']; ?></td>
 					<td><?php echo $row['id_doc']; ?></td>
-					<td><?php echo $row['id_index']; ?></td>
+					<td><?php echo $row['index_name']; ?></td>
 					<td><?php echo $row['id_period']; ?></td>
 					<td><?php echo $row['value']; ?></td>
                     <td><center><a href="./upload_files/<?php echo $row['login']; ?>/<?php echo $row['date']; ?>/<?php echo $row['section']; ?>/<?php echo $row['file_name']; ?>" class="floating-button" target="_blank">Скачать</a></center></td>

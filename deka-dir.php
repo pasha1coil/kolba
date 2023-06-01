@@ -97,9 +97,9 @@ $list = $sth->fetchAll(PDO::FETCH_ASSOC);
 		</div>
 	</div>
     <center><button class="floating-buttonSvod" onclick="show_popap('modal-2')">Понижающие показатели</button></center>
-
+    <form method="post">
     <div class="overlay" id="modal-2">
-        <form method="post">
+
 		    <div class="contentoverlay">
                 <div class="popap">
                     <table id = 'sf'>
@@ -936,7 +936,7 @@ $list = $sth->fetchAll(PDO::FETCH_ASSOC);
 			  <tr class="box">
 				<td>3.5.1</td>
 				<td>1-место/td>
-				<td><input type="number" id="first9" oninput="mult(10,'first76','result76')" placeholder="__________"></td>
+				<td><input type="number" id="first76" oninput="mult(10,'first76','result76')" placeholder="__________"></td>
 				<td>Цифра</td>
 				
 				<td id="result76"></td>
