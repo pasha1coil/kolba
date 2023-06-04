@@ -8,11 +8,11 @@ $id_ek = intval($_SESSION['id_ek'][0]);
 
 $update_values = "UPDATE eff_contract AS ec
 INNER JOIN (
-    SELECT id_ek, SUM(value * count) AS total_value
+    SELECT id_ek, SUM(value) AS total_count
     FROM docs 
     GROUP BY id_ek
 ) d ON ec.id_ek = d.id_ek
-SET ec.all_value = d.total_value
+SET ec.all_value = d.total_count
 WHERE ec.educator_id = '$educator_id' AND ec.id_ek = '$id_ek' AND ec.all_value = 0;";
 $result_update = mysqli_query($connection, $update_values);
 if (!$result_update) {

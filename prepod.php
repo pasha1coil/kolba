@@ -73,11 +73,6 @@ $_SESSION['educator_id'] = $educator_id;
             }
         });
     }
-
-    function updateFileCount(input, resultId) {
-        var fileCount = input.files.length;
-        document.getElementById(resultId).value = fileCount;
-    }
 </script>
 
 

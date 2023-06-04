@@ -62,7 +62,6 @@ if(isset($_POST['uploadBtn'])) {
     $result_id = mysqli_query($connection, $sql_id);
     $id_ek = mysqli_fetch_row($result_id);
     $_SESSION['id_ek']=$id_ek;
-    echo intval($id_ek[0]);
 
     $file1Count = count($_FILES['files1']['name']);
     $uploadedFiles1 = 0;
