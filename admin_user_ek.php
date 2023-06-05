@@ -21,7 +21,7 @@ FROM docs
 INNER JOIN eff_contract ON docs.educator_id = eff_contract.educator_id
 INNER JOIN employees ON employees.educator_id = docs.educator_id
 INNER JOIN table_index ON table_index.`id index` = docs.id_index
-WHERE docs.educator_id = $id AND eff_contract.checked = 0;;
+WHERE docs.educator_id = $id AND docs.checked = 0;;
 ;
 ");
 $sth->execute();
@@ -31,7 +31,7 @@ $sth1 = $dbh->prepare("SELECT *
 FROM docs
 INNER JOIN eff_contract 
 ON docs.educator_id = eff_contract.educator_id 
-where docs.educator_id=$id and checked=1");
+where docs.educator_id=$id and docs.checked=1");
 $sth1->execute();
 $list1 = $sth1->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -151,7 +151,7 @@ $list1 = $sth1->fetchAll(PDO::FETCH_ASSOC);
 				<tr>
 					<td scope="row">
 						<label class="control control--checkbox">
-						<input type="checkbox"/>
+                            <input type="checkbox" name="selected_docs[]" value="<?php echo $row['id_doc']; ?>"/>
 						<div class="control__indicator"></div>
 						</label>
 					</td>
@@ -165,8 +165,8 @@ $list1 = $sth1->fetchAll(PDO::FETCH_ASSOC);
           		<?php endforeach; ?>
 			</table>
 	</div>
-	<center><a class="floating-button">Подтвердить</a></center>
-	
+	<center><a class="floating-button" id="confirm-button">Подтвердить</a></center>
+
 	  
   </div>
 
@@ -186,6 +186,27 @@ $list1 = $sth1->fetchAll(PDO::FETCH_ASSOC);
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="js/schitalka.js"></script>
+<!--===============================================================================================-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    document.getElementById('confirm-button').addEventListener('click', function () {
+        var checkboxes = document.getElementsByName('selected_docs[]');
+        var selectedDocs = [];
+        for (var i = 0; i < checkboxes.length; i++) {
+            if (checkboxes[i].checked) {
+                selectedDocs.push(checkboxes[i].value);
+            }
+        }
+
+        if (selectedDocs.length === 0) {
+            alert("Выберите хотя бы один документ.");
+        } else {
+            var selectedDocsString = selectedDocs.join(',');
+            window.location.href = 'admin_confirm.php?id=<?php echo $id; ?>&selected_docs=' + selectedDocsString;
+        }
+    });
+
+</script>
 
 </body>
 </html>
