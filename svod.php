@@ -7,7 +7,7 @@ echo $institute;
 echo $department;
 echo $position;
 
-$dbh = new PDO('mysql:dbname=server2;host=localhost', 'root', '');
+$dbh = new PDO('mysql:dbname=server4;host=projectkolba', 'root', '');
 /* Запрос в БД */
 $search = $dbh->prepare("SELECT * FROM employees where position in (select position from table_position where position ='$position')");
 $search->execute();

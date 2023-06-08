@@ -15,6 +15,9 @@
   src: url('../fonts/ubuntu/Ubuntu-Bold.ttf'); 
 }
 
+body {
+  background: #c7b39b url(images/bg-01.jpg); /* Цвет фона и путь к файлу */
+  }
 
 
 

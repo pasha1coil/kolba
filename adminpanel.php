@@ -1,7 +1,11 @@
 <?php
 session_start();
-$connection =mysqli_connect('projectkolba','root','', 'server2');
-$dbh = new PDO('mysql:dbname=server2;host=projectkolba', 'root', '');
+$hostname = 'projectkolba'; // Тут заменить данные на нужные
+$server_login = 'root'; // Тут заменить данные на нужные
+$server_password = ''; // Тут заменить данные на нужные
+$database = 'server4'; // Тут заменить данные на нужные
+$connection =mysqli_connect($hostname,$server_login,$server_password, $database);
+$dbh = new PDO('mysql:dbname=server4;host=projectkolba', 'root', '');// Тут заменить host на нужное
 /* Запрос в БД */
 $sth = $dbh->prepare("SELECT * FROM employees where position!='admin'");
 $sth->execute();
@@ -57,7 +61,7 @@ $list2 = $sth2->fetchAll(PDO::FETCH_ASSOC);
 		<a class="blockleft" href="http://localhost:8080/" target="_blank">Сводная таблица</a>
 	</div>
 	<div>
-		<button class="blockright">Выход</button>
+		<button class="blockright"  onclick="location.href='logout.php';">Выход</button>
 	</div>
 	<center><button class="floating-buttonSvod" onclick="show_popap('modal-2')">Проверенные отчёты</button></center>
 
@@ -94,12 +98,6 @@ $list2 = $sth2->fetchAll(PDO::FETCH_ASSOC);
 			<input class="form-control" type="text" placeholder="Параметры для фильтрации" id="search-text" onkeyup="filter(this, 'sf2')">
 				<th colspan="6"><h2 class="mb-5"><center>Отчеты</center></h2></th>
 				<tr>
-					<td>
-							<label class="control control--checkbox">
-                                <input type="checkbox"  class="js-check-all"/>
-                                <div class="control__indicator"></div>
-                            </label>
-					</td>
 					<td>ФИО</td>
 					<td>Должность</td>
 					<td>Кафедра</td>
@@ -108,24 +106,18 @@ $list2 = $sth2->fetchAll(PDO::FETCH_ASSOC);
 				</tr>
               <?php foreach ($list as $row): ?>
                   <tr>
-                      <td scope="row">
-                          <label class="control control--checkbox">
-                              <input type="checkbox" />
-                              <div class="control__indicator"></div>
-                          </label>
-                      </td>
                       <td><?php echo $row['last_name'] . ' ' . $row['name_real'] . ' ' . $row['patronymic']; ?></td>
                       <td><?php echo $row['position']; ?></td>
                       <td><?php echo $row['department']; ?></td>
                       <td>
                               <?php
                               $not_checked_query = "SELECT COUNT(*) as not_checked FROM eff_contract WHERE educator_id = " . $row['educator_id'] . " AND checked = 0";
-                              $not_checked_result = mysqli_query($conn, $not_checked_query);
+                              $not_checked_result = mysqli_query($connection, $not_checked_query);
                               $not_checked = mysqli_fetch_assoc($not_checked_result);
                               echo $not_checked['not_checked'];
                               ?>/<?php
                               $all_ek_query = "SELECT COUNT(*) as all_ek FROM eff_contract WHERE educator_id = " . $row['educator_id'];
-                              $all_ek_result = mysqli_query($conn, $all_ek_query);
+                              $all_ek_result = mysqli_query($connection, $all_ek_query);
                               $all_ek = mysqli_fetch_assoc($all_ek_result);
                               echo $all_ek['all_ek'];
                               ?>
@@ -134,13 +126,10 @@ $list2 = $sth2->fetchAll(PDO::FETCH_ASSOC);
                   </tr>
               <?php endforeach; ?>
           </table>
-
-
-      </div>
-	<center><a class="floating-button">Подтвердить</a></center>
-
+    </div>
+</body>
 <!--===============================================================================================-->
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
 	<script src="vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
@@ -155,5 +144,4 @@ $list2 = $sth2->fetchAll(PDO::FETCH_ASSOC);
 	<script src="vendor/countdowntime/countdowntime.js"></script>
 <!--===============================================================================================-->
 	<script src="js/schitalka.js"></script>
-</body>
 </html>
