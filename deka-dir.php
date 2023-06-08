@@ -18,8 +18,9 @@ $pos = $_POST['selector'];
 echo $pos;
 /* Запрос в БД */
 $sth = $dbh->prepare("SELECT emp.`last_name`,`emp`.`name_real`,`emp`.`patronymic`,
-       `emp`.`position`,`ef`.`id_ek` FROM `eff_contract` as `ef`,`employees` as `emp` 
-                                     WHERE `ef`.`educator_id`=`emp`.`educator_id` and `ef`.`checked`=0;");
+       `emp`.`position`,`emp`.`educator_id`, `ef`.`id_ek` FROM `eff_contract` as `ef`,`employees` as `emp` 
+                                     WHERE `ef`.`educator_id`=`emp`.`educator_id` and `ef`.`checked`=0 
+                                                                    and `emp`.`department`='$department' and `emp`.`position`='Prepodavatel';");//Поменять position на нужную
 $sth->execute();
 $list = $sth->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -83,6 +84,16 @@ $list = $sth->fetchAll(PDO::FETCH_ASSOC);
             }
         });
     }
+
+
+    $(document).ready(function(){
+    // Изменяем текст в элементе input button
+    $("#myInput").prop("value", "Input New Text");
+
+    // Изменяем текст в элементе button
+    $("#myButton").html("Button New Text");
+});
+
 </script>
 	
 
@@ -132,6 +143,35 @@ $list = $sth->fetchAll(PDO::FETCH_ASSOC);
                     <?php endforeach; ?>
                     </table>
                     <center><button class="floating-buttonSvod" onclick="close_popap('modal-2')">Закрыть</button></center>
+                </div>
+		    </div>
+        </form>
+	</div>
+
+    <center><button class="floating-buttonSvod" onclick="show_popap('modal-3')">Подтверждение ЭК</button></center>
+
+    <form method="post">
+    <div class="overlay" id="modal-3">
+
+		    <div class="contentoverlay">
+                <div class="popap">
+                    <table>
+                        <tr>
+                            <th><center>ФИО</center></th>
+                            <th><center>Должность</center></th>
+                            <th><center>Номер ЭК</center></th>
+                            <th><center>Подтвердить ЭК</center></th>
+                        </tr>
+                    <?php foreach ($list as $row): ?>
+                        <tr>
+                            <td><?php echo $row['last_name'] ,' ',$row['name_real'],' ', $row['patronymic']; ?></td>
+                            <td><?php echo $row['position']; ?></td>
+                            <td><?php echo $row['id_ek']; ?></td>
+                            <td><a href="dekan_direktor_accept.php?id=<?php echo $row['educator_id']; ?>" class="floating-button">Открыть папку</a></td>
+                        </tr>
+                    <?php endforeach; ?>
+                    </table>
+                    <center><button class="floating-buttonSvod" onclick="close_popap('modal-3')">Закрыть</button></center>
                 </div>
 		    </div>
         </form>
