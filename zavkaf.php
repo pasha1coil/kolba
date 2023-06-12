@@ -126,7 +126,7 @@
 
 
                             
-                            <center><section >
+                            <!--<center><section >
                                 <label class="wrap-input100 validate-input">Выберите факультет:</label>
                                 <select class="input100">
                                     <option ></option>
@@ -135,7 +135,7 @@
                                     <option value="4">Факультет 3</option>
                                     <option value="5">Факультет 4</option>
                                 </select>
-                            </section></center>
+                            </section></center>-->
                             
 							
 
