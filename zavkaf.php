@@ -10,6 +10,8 @@
     $stavka=mysqli_query($connection,"select stavka from employees where login='$username'")->fetch_assoc()['stavka'];
     $educator_id=mysqli_query($connection,"select educator_id from employees where login='$username'")->fetch_assoc()['educator_id'];
 
+    $all_departments = mysqli_query($connection,"select department from table_department");
+    $all_positions = mysqli_query($connection,"select position from table_position where position != 'admin'");
     $_SESSION['educator_id'] = $educator_id;
 ?>
 <!doctype html>
@@ -99,83 +101,83 @@
 		  </div>
 		</div>
 	</div>
-	
-	<div class="overlay" id="modal-2">
 
-                <div class="limiteroverley">
-					<div class="popap">
-					<div class="container-login100">
+    <div class="overlay" id="modal-2">
+        <div class="limiteroverley">
+            <div class="popap">
+                <div class="container-login100">
                     <div class="wrap-login100 p-t-30 p-b-50">
-
-                        <form class="login100-form validate-form p-b-33 p-t-5">
-
-                            <div class="wrap-input100 validate-input" data-validate = "Введите фамилию">
+                        <form class="login100-form validate-form p-b-33 p-t-5" method="post" action="register.php">
+                            <div class="wrap-input100 validate-input" data-validate="Введите фамилию">
                                 <input class="input100" type="text" name="lastname" placeholder="Фамилия">
                                 <span class="focus-input100" data-placeholder="&#xe82a;"></span>
                             </div>
-
-                            <div class="wrap-input100 validate-input" data-validate = "Введите имя">
+                            <div class="wrap-input100 validate-input" data-validate="Введите имя">
                                 <input class="input100" type="text" name="firstname" placeholder="Имя">
                                 <span class="focus-input100" data-placeholder="&#xe82a;"></span>
                             </div>
-
-                            <div class="wrap-input100 validate-input" data-validate = "Введите отчество">
+                            <div class="wrap-input100 validate-input" data-validate="Введите отчество">
                                 <input class="input100" type="text" name="patronymic" placeholder="Отчество">
                                 <span class="focus-input100" data-placeholder="&#xe82a;"></span>
                             </div>
-
-
-                            
-                            <!--<center><section >
-                                <label class="wrap-input100 validate-input">Выберите факультет:</label>
-                                <select class="input100">
-                                    <option ></option>
-                                    <option value="2">Факультет 1</option>
-                                    <option value="3">Факультет 2</option>
-                                    <option value="4">Факультет 3</option>
-                                    <option value="5">Факультет 4</option>
-                                </select>
-                            </section></center>-->
-                            
-							
-
-                            <div class="wrap-input100 validate-input" data-validate = "Введите ставку">
+                            <!--<div class="wrap-input100 validate-input" data-validate = "Введите должность">
+                                <input class="input100" type="text" name="doljnost" placeholder="Должность">
+                                <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+                            </div>-->
+                            <center>
+                                <section>
+                                    <label class="wrap-input100 validate-input">Выберите должность:</label>
+                                    <select class="input100" name="doljnost">
+                                        <option value=""></option>
+                                        <?php
+                                        while ($row = mysqli_fetch_assoc($all_positions)) {
+                                            echo '<option value="' . $row['position'] . '">' . $row['position'] . '</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                </section>
+                            </center>
+                            <div class="wrap-input100 validate-input" data-validate="Введите ставку">
                                 <input class="input100" type="text" name="stavka" placeholder="Ставка">
                                 <span class="focus-input100" data-placeholder="&#xe82a;"></span>
                             </div>
-
-                            <div class="wrap-input100 validate-input" data-validate = "Введите институт или факультет">
+                            <!--<div class="wrap-input100 validate-input" data-validate = "Введите институт или факультет">
                                 <input class="input100" type="text" name="fakultet" placeholder="Факультет">
                                 <span class="focus-input100" data-placeholder="&#xe82a;"></span>
-                            </div>
-
-                            <div class="wrap-input100 validate-input" data-validate = "Введите почту">
+                            </div>-->
+                            <center>
+                                <section>
+                                    <label class="wrap-input100 validate-input">Выберите факультет:</label>
+                                    <select class="input100" name="fakultet">
+                                        <option value=""></option>
+                                        <?php
+                                        while ($row = mysqli_fetch_assoc($all_departments)) {
+                                            echo '<option value="' . $row['department'] . '">' . $row['department'] . '</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                </section>
+                            </center>
+                            <div class="wrap-input100 validate-input" data-validate="Введите почту">
                                 <input class="input100" type="text" name="username" placeholder="Почта">
                                 <span class="focus-input100" data-placeholder="&#xe82a;"></span>
                             </div>
-
                             <div class="wrap-input100 validate-input" data-validate="Введите пароль">
                                 <input class="input100" type="password" name="pass" placeholder="Пароль">
                                 <span class="focus-input100" data-placeholder="&#xe80f;"></span>
                             </div>
-
                             <div class="container-login100-form-btn m-t-32">
-                                <button class="login100-form-btn">
-                                    Зарегистрировать
-                                </button>
+                                <button class="login100-form-btn" type="submit">Зарегистрировать</button>
                             </div>
-							<div class="container-login100-form-btn m-t-32">
-                                <button class="login100-form-btn">
-                                    Закрыть
-                                </button>
+                            <div class="container-login100-form-btn m-t-32">
+                                <button class="login100-form-btn" type="button" onclick="close_popap('modal-2')">Закрыть</button>
                             </div>
-
                         </form>
-					</div>
                     </div>
                 </div>
-			</div>
-	</div>
+            </div>
+        </div>
+    </div>
     <form method="POST" action="upload_start.php" enctype="multipart/form-data">
         <div class="content">
         <table>
