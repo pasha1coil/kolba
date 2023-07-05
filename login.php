@@ -32,14 +32,11 @@ if (isset($_POST['username']) && isset($_POST['pass'])) {
         }
     } else {
         echo '<script type="text/javascript">
-            alert("Нет такого пользователя");
+            alert("Нет такого пользователя в базе данных. Проверьте логин и пароль");
             window.location.href ="index.html";
         </script>';
     }
 
-} else {
-    echo "Failed isset";
 }
-
 
 ?>

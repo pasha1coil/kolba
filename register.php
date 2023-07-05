@@ -22,14 +22,17 @@ if (isset($_POST['username']) && isset($_POST['pass'])) {
             window.location.href ="zavkaf.php";
         </script>';
     } else {
+        echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
         echo '<script type="text/javascript">
-            alert("Ошибка регистрации");
             window.location.href ="zavkaf.php";
         </script>';
     }
 
 } else {
-    echo "Failed isset";
+        echo '<script type="text/javascript">
+            alert("Ошибка регистрации. Повторите попытку позже");
+            window.location.href ="zavkaf.php";
+        </script>';
 }
 
 ?>

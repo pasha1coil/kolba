@@ -6,6 +6,9 @@ $educator_id=$_SESSION['educator_id_for_lowball']; /*Комментарий: к�
 $date=$_SESSION['date'];
 $numfiles = $_SESSION['numfiles4']; // количество файлов
 $uploadFileDir = "./upload_files/$username/$date/4/"; // Путь загрузки файлов
+$position=mysqli_query($connection,"select position from employees where login='$username'")->fetch_assoc()['position'];
+$errors = 0;
+
 if (!is_dir($uploadFileDir)){ // Создаётся каждый раз при нажатии кнопки. Лучше доработать
     mkdir($uploadFileDir,0700);}
 
@@ -21,6 +24,7 @@ for ($i = 0; $i < $numfiles; $i++) {
                 $result = mysqli_query($connection, $query);
                 if (!$result) {
                     echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                    $errors += 1;
                 }
             }
             break;
@@ -31,6 +35,7 @@ for ($i = 0; $i < $numfiles; $i++) {
                 $result = mysqli_query($connection, $query);
                 if (!$result) {
                     echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                    $errors += 1;
                 }
             }
             break;
@@ -41,6 +46,7 @@ for ($i = 0; $i < $numfiles; $i++) {
                 $result = mysqli_query($connection, $query);
                 if (!$result) {
                     echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                    $errors += 1;
                 }
             }
             break;
@@ -51,6 +57,7 @@ for ($i = 0; $i < $numfiles; $i++) {
                 $result = mysqli_query($connection, $query);
                 if (!$result) {
                     echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                    $errors += 1;
                 }
             }
             break;
@@ -61,6 +68,7 @@ for ($i = 0; $i < $numfiles; $i++) {
                 $result = mysqli_query($connection, $query);
                 if (!$result) {
                     echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                    $errors += 1;
                 }
             }
             break;
@@ -71,6 +79,7 @@ for ($i = 0; $i < $numfiles; $i++) {
                 $result = mysqli_query($connection, $query);
                 if (!$result) {
                     echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                    $errors += 1;
                 }
             }
             break;
@@ -81,6 +90,7 @@ for ($i = 0; $i < $numfiles; $i++) {
                 $result = mysqli_query($connection, $query);
                 if (!$result) {
                     echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                    $errors += 1;
                 }
             }
             break;
@@ -91,6 +101,7 @@ for ($i = 0; $i < $numfiles; $i++) {
                 $result = mysqli_query($connection, $query);
                 if (!$result) {
                     echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                    $errors += 1;
                 }
             }
             break;
@@ -101,6 +112,7 @@ for ($i = 0; $i < $numfiles; $i++) {
                 $result = mysqli_query($connection, $query);
                 if (!$result) {
                     echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                    $errors += 1;
                 }
             }
             break;
@@ -111,11 +123,19 @@ for ($i = 0; $i < $numfiles; $i++) {
                 $result = mysqli_query($connection, $query);
                 if (!$result) {
                     echo "Ошибка при выполнении запроса: " . mysqli_error($connection);
+                    $errors += 1;
                 }
             }
             break;
     }
 
+}
+
+if($errors > 0) {
+    echo '<script type="text/javascript">
+            alert("Произошла ошибка при загрузке данных. Проверьте правильность загрузки");
+            window.location.href ="deka-dir.php";
+        </script>';
 }
 echo '<script type="text/javascript"> // Переход на главный файл
 window.location.href ="upload_end.php";

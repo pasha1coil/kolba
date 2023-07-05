@@ -94,7 +94,7 @@ if(isset($_POST['uploadBtn'])) {
             $uploadedFiles3++;
         }
     }
-    if ($uploadedFiles1>0) {
+    if ($uploadedFiles1>0   ) {
         require_once("upload1.php"); // Загрузка файлов УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА
     }
     if ($uploadedFiles2>0) {

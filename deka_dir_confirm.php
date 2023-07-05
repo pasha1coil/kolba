@@ -36,6 +36,8 @@ if (isset($_GET['selected_docs'])) {
     header('Location:deka-dir.php');
     exit();
 } else {
-    echo "error";
+    echo '<script type="text/javascript">
+            alert("Произошла ошибка при подтверждении");
+        </script>';
 }
 ?>
